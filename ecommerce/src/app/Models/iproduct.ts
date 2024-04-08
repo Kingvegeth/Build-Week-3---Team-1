@@ -8,4 +8,5 @@ export interface iProduct {
   description:string
   available:boolean
   quantity:number
+  isInWishlist:boolean
 }

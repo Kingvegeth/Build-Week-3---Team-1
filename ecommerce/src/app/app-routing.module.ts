@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { GuestGuard } from './auth/guest.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { AuthGuard } from './auth/auth.guard';
+import { CartComponent } from './pages/cart/cart.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,16 @@ const routes: Routes = [
   {
     path:'home',
     component:HomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'cart',
+    component:CartComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'wishlist',
+    component:WishlistComponent,
     canActivate: [AuthGuard]
   }
 ];

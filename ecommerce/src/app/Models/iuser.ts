@@ -6,4 +6,5 @@ export interface iUser {
   password: string
   cart: number[]
   wishlist: number[]
+  admin: boolean
 }

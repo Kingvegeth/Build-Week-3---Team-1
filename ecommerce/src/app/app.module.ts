@@ -8,13 +8,18 @@ import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './main-components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './pages/cart/cart.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    CartComponent
+    CartComponent,
+    WishlistComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

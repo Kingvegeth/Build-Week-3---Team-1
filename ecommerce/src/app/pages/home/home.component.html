@@ -1,1 +1,27 @@
-Ciao
+<div class="container mt-5">
+
+
+
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+    <div class="col mb-4" *ngFor="let product of products">
+      <div class="card h-100">
+        <img [src]="product.productImg" class="card-img-top" [alt]="product.name">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">Marca <strong>{{product.brand}}</strong></p>
+          <p class="card-text">{{product.description}}</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary" [disabled]="!product.available">Aggiungi al carrello</button>
+          <button *ngIf="isAdmin" class="btn btn-secondary">Modifica</button>
+
+        </div>
+        <button *ngIf="!isAdmin" class="btn" (click)="toggleWishlist(product)">
+          <i [ngClass]="product.isInWishlist ? 'fas fa-heart' : 'far fa-heart'"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -121,30 +121,30 @@ export class AuthService {
     return currentUser ? currentUser.id : null;
   }
 
-  addFavorite(userId: number, movieId: number): Observable<any> {
+  addWish(userId: number, productId: number): Observable<any> {
     const url = `${environment.usersUrl}/${userId}`;
     return this.http.get<any>(url).pipe(
       tap(user => {
-        const favorites = Array.isArray(user.favorites) ? user.favorites : [];
-        if (!favorites.includes(movieId)) {
-          const updatedFavorites = [...favorites, movieId];
-          const updatedUser = { ...user, favorites: updatedFavorites };
-          this.http.patch<any>(url, { favorites: updatedFavorites }).subscribe(() => {
+        const wishlist = Array.isArray(user.wishlist) ? user.wishlist : [];
+        if (!wishlist.includes(productId)) {
+          const updatedwishlist = [...wishlist, productId];
+          const updatedUser = { ...user, wishlist: updatedwishlist };
+          this.http.patch<any>(url, { wishlist: updatedwishlist }).subscribe(() => {
             this.authSubject.next(updatedUser);
           });
         }
       })
     );
   }
-  deleteFavorite(userId: number, movieId: number): Observable<any> {
+  deleteWish(userId: number, productId: number): Observable<any> {
     const url = `${environment.usersUrl}/${userId}`;
     return this.http.get<any>(url).pipe(
       tap(user => {
-        const favorites = Array.isArray(user.favorites) ? user.favorites : [];
-        if (favorites.includes(movieId)) {
-          const updatedFavorites = favorites.filter((id: number) => id !== movieId);
-          const updatedUser = { ...user, favorites: updatedFavorites };
-          this.http.patch<any>(url, { favorites: updatedFavorites }).subscribe(() => {
+        const wishlist = Array.isArray(user.wishlist) ? user.wishlist : [];
+        if (wishlist.includes(productId)) {
+          const updatedwishlist = wishlist.filter((id: number) => id !== productId);
+          const updatedUser = { ...user, wishlist: updatedwishlist };
+          this.http.patch<any>(url, { wishlist: updatedwishlist }).subscribe(() => {
             this.authSubject.next(updatedUser);
           });
         }

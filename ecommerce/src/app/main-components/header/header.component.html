@@ -2,7 +2,8 @@
 
   <ul class="nav col-7 col-md-auto mb-2 justify-content-center mb-md-0">
     <li><a *ngIf="isUserLoggedIn" routerLink="/home" class="nav-link text-white px-2">Home</a></li>
-
+    <li><a *ngIf="isUserLoggedIn" routerLink="/cart" class="nav-link text-white px-2">Carrello</a></li>
+    <li><a *ngIf="isUserLoggedIn" routerLink="/wishlist" class="nav-link text-white px-2">Lista dei desideri</a></li>
   </ul>
 
   <div class="col-md-3 text-end">

@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <h2>La mia Wishlist</h2>
+  <div *ngIf="currentUserWishlistProducts.length > 0; else emptyWishlist">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let product of currentUserWishlistProducts">
+        <div class="card mb-4">
+          <img [src]="product.productImg" class="card-img-top" [alt]="product.name">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p class="card-text">Prezzo: {{ product.price }}€</p>
+            <button class="btn btn-danger" (click)="removeFromWishlist(product.id)">Rimuovi dalla Wishlist</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #emptyWishlist>
+    <p>La tua Wishlist è vuota.</p>
+  </ng-template>
+</div>

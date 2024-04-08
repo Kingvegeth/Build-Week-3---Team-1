@@ -5,25 +5,53 @@
       "password": "$2a$10$Aw1WacFgjotbz1QsnnDD2.KKqzP431ZdKPXvTNvnGoDF5ISsSbPh2",
       "firstName": "remo",
       "lastName": "pedretti",
-      "id": 1
+      "id": 1,
+      "wishlist": [
+        1,
+        2
+      ],
+      "cart": [],
+      "admin": true
+    },
+    {
+      "email": "jesus@god.com",
+      "password": "$2a$10$SPfNHfB2f1G7wVh0hSxN5uqlh.9692nnHOtWL5TzbyTBKuXnTIaT.",
+      "firstName": "Gesù",
+      "lastName": "Cristo",
+      "id": 2,
+      "wishlist": [
+        1,
+        2
+      ]
     }
   ],
   "products": [
     {
-      "id":1,
+      "id": 1,
       "name": "La Bibbia",
-      "brand":"Dio",
-      "description":"Il Best-seller Fantasy che più letto in Epicode",
-      "available":true,
-      "productImg":"https://picsum.photos/200/300"
+      "brand": "Dio",
+      "description": "Il Best-seller Fantasy che più letto in Epicode",
+      "available": true,
+      "productImg": "https://picsum.photos/200/300",
+      "category": "Libro"
     },
     {
-      "id":2,
+      "id": 2,
       "name": "La Bibbia 2 - Cristo Returns",
-      "brand":"Dio",
-      "description":"Ponzio, prova a lavarti le mani dopo che te le ho staccate!",
-      "available":true,
-      "productImg":"https://picsum.photos/200/300"
+      "brand": "Dio",
+      "description": "Ponzio, prova a lavarti le mani dopo che te le ho staccate!",
+      "available": true,
+      "productImg": "https://picsum.photos/200/300",
+      "category": "Libro"
+    },
+    {
+      "id": 3,
+      "name": "Tv bella",
+      "brand": "LG",
+      "description": "9001 pollici di puro godimento!",
+      "available": true,
+      "productImg": "https://picsum.photos/200/300",
+      "category": "Elettronica"
     }
   ]
 }
