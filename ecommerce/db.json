@@ -21,8 +21,7 @@
       "id": 2,
       "wishlist": [
         1,
-        2,
-        3
+        4
       ]
     }
   ],
@@ -34,7 +33,7 @@
       "description": "Il Best-seller Fantasy che più letto in Epicode",
       "available": true,
       "productImg": "https://picsum.photos/200/300",
-      "category": "Libro",
+      "category": "Libri",
       "price": 6.66
     },
     {
@@ -44,7 +43,7 @@
       "description": "Ponzio, prova a lavarti le mani dopo che te le ho staccate!",
       "available": true,
       "productImg": "https://picsum.photos/200/300",
-      "category": "Libro",
+      "category": "Libri",
       "price": 69
     },
     {
@@ -55,6 +54,16 @@
       "available": true,
       "productImg": "https://picsum.photos/200/300",
       "category": "Elettronica",
+      "price": 9999
+    },
+    {
+      "id": 4,
+      "name": "Mike è bello",
+      "brand": "Captain Mike",
+      "description": "!important e altre utilissime Best Practices",
+      "available": true,
+      "productImg": "https://i.postimg.cc/SxhnSH3J/bestpractice.png",
+      "category": "Libri",
       "price": 9999
     }
   ]

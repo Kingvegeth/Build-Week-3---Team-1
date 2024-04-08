@@ -1,15 +1,24 @@
 Idee:
 
--portafogli
--selezione categoria preferita alla registrazione
 
 
 -ordine prodotti random
+-criteri di ordine dei prodotti
 
--procedura di acquisto
+-selezione categoria preferita alla registrazione
 
--coupon
+
+
+
+
 
 -crud
+-carrello
+  -procedura di acquisto
+  -checkout
 
--criteri di ordine dei prodotti
+-coupon
+-portafogli
+
+
+-cambiare altezza card - immagine troppo piccola

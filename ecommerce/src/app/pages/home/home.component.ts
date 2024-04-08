@@ -19,7 +19,6 @@ export class HomeComponent {
 
   searchTerms: string = ''
 
-
   isAdmin: boolean = false
 
   constructor(private productsSvc: ProductsService, private authSvc: AuthService) { }
@@ -97,9 +96,11 @@ showSearch(event: any): void {
     this.showFiltered = true;
   } else {
     this.filteredProducts = [...this.products];
+
     this.showFiltered = false;
   }
 }
+
 
 
 }
