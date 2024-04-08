@@ -36,4 +36,13 @@ export class ProductsService {
   );
 }
 
+getUniqueCategories(): Observable<string[]> {
+  return this.getAll().pipe(
+    map(products => {
+      const categories = products.map(product => product.category);
+      return [...new Set(categories)];
+    })
+  );
+}
+
 }

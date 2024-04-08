@@ -12,6 +12,7 @@ import { iProduct } from '../../Models/iproduct';
 export class HomeComponent {
 
   products: iProduct[] = [];
+  categories: string[] = [];
   filteredProducts: iProduct[] = [];
   showFiltered: boolean = false;
 
@@ -33,6 +34,9 @@ export class HomeComponent {
           product.isInWishlist = wishlistIds.includes(product.id);
         });
       }
+    });
+    this.productsSvc.getUniqueCategories().subscribe(categories => {
+      this.categories = categories;
     });
   }
 
@@ -64,6 +68,8 @@ export class HomeComponent {
     this.productsSvc.getProductsByCategory(category).subscribe(filtered => {
       this.filteredProducts = filtered;
       this.showFiltered = true;
+      console.log('categorie filtrate!');
+
     });
   }
 
