@@ -17,6 +17,9 @@ export class HomeComponent {
   showFiltered: boolean = false;
 
 
+  searchTerms: string = ''
+
+
   isAdmin: boolean = false
 
   constructor(private productsSvc: ProductsService, private authSvc: AuthService) { }
@@ -65,12 +68,31 @@ export class HomeComponent {
   }
 
   filterByCategory(category: string): void {
-    this.productsSvc.getProductsByCategory(category).subscribe(filtered => {
-      this.filteredProducts = filtered;
-      this.showFiltered = true;
-      console.log('categorie filtrate!');
+  this.productsSvc.getProductsByCategory(category).subscribe(filteredProducts => {
+    this.products = filteredProducts;
+  });
+}
 
-    });
+showAllProducts(): void {
+  this.productsSvc.getAll().subscribe(allProducts => {
+    this.products = allProducts;
+  });
+}
+
+showSearch(event: any): void {
+  const searchTerm = event?.target.value.trim().toLowerCase();
+  if (searchTerm !== '') {
+    this.filteredProducts = this.products.filter(product =>
+      product.name.toLowerCase().includes(searchTerm) ||
+      product.description.toLowerCase().includes(searchTerm) ||
+      product.category.toLowerCase().includes(searchTerm)
+    );
+    this.showFiltered = true;
+  } else {
+    this.filteredProducts = [...this.products];
+    this.showFiltered = false;
   }
+}
+
 
 }

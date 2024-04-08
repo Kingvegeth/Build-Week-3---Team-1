@@ -1,10 +1,16 @@
 <div class="container mt-5">
 
-  <ul>
-    <li *ngFor="let category of categories">
-      <button (click)="filterByCategory(category)">{{category}}</button>
-    </li>
-  </ul>
+  <form class="mb-3" action="submit">
+    <input  type="search" (input)="showSearch($event)">
+  </form>
+
+
+  <div class="d-flex gap-1 mb-2">
+    <button class="btn btn-success rounded-5" (click)="showAllProducts()" >Tutto</button>
+    <div  *ngFor="let category of categories">
+      <button class="btn btn-secondary rounded-5" (click)="filterByCategory(category)">{{category}}</button>
+    </div>
+  </div>
 
   <div *ngIf="filteredProducts">
 
@@ -18,7 +24,7 @@
             <p class="card-text">{{product.description}}</p>
             <p> {{product.category}} </p>
           </div>
-          <div class="card-footer">
+          <div class="card-footer d-flex justify-content-between">
             <button class="btn btn-primary" [disabled]="!product.available">Aggiungi al carrello</button>
             <button *ngIf="isAdmin" class="btn btn-secondary">Modifica</button>
 
