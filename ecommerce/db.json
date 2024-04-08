@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "email": "remo@chat.it",
+      "password": "$2a$10$Aw1WacFgjotbz1QsnnDD2.KKqzP431ZdKPXvTNvnGoDF5ISsSbPh2",
+      "firstName": "remo",
+      "lastName": "pedretti",
+      "id": 1
+    }
+  ],
+  "products": [
+    {
+      "id":1,
+      "name": "La Bibbia",
+      "brand":"Dio",
+      "description":"Il Best-seller Fantasy che più letto in Epicode",
+      "available":true,
+      "productImg":"https://picsum.photos/200/300"
+    },
+    {
+      "id":2,
+      "name": "La Bibbia 2 - Cristo Returns",
+      "brand":"Dio",
+      "description":"Ponzio, prova a lavarti le mani dopo che te le ho staccate!",
+      "available":true,
+      "productImg":"https://picsum.photos/200/300"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+<header [ngClass]="{'scrolled': scrolled}" class="sticky-top bg-dark d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 px-3">
+
+  <ul class="nav col-7 col-md-auto mb-2 justify-content-center mb-md-0">
+    <li><a *ngIf="isUserLoggedIn" routerLink="/home" class="nav-link text-white px-2">Home</a></li>
+    <li><a *ngIf="isUserLoggedIn" routerLink="/users" class="nav-link text-white px-2">Utenti</a></li>
+    <li><a *ngIf="isUserLoggedIn" routerLink="/profile" class="nav-link text-white px-2">Profilo</a></li>
+  </ul>
+
+  <div class="col-md-3 text-end">
+    <button *ngIf="!isUserLoggedIn" type="button" routerLink="/auth/login" class="btn btn-outline-warning me-2">Accedi</button>
+    <button *ngIf="!isUserLoggedIn" type="button" routerLink="/auth/register" class="btn btn-success">Registrati</button>
+    <button (click)="logout()" *ngIf="isUserLoggedIn" class="btn btn-danger">Esci</button>
+  </div>
+</header>
