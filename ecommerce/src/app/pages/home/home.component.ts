@@ -51,20 +51,27 @@ export class HomeComponent {
     }
 
     if (product.isInWishlist) {
-      this.authSvc.deleteWish(userId, product.id).subscribe(() => {
-        console.log('Prodotto rimosso dalla wishlist con successo!');
-        product.isInWishlist = false;
-      }, error => {
-        console.error('Errore nella rimozione dalla wishlist', error);
+      this.authSvc.deleteWish(userId, product.id).subscribe({
+        next: () => {
+          console.log('Prodotto rimosso dalla wishlist con successo!');
+          product.isInWishlist = false;
+        },
+        error: (error) => {
+          console.error('Errore nella rimozione dalla wishlist', error);
+        }
       });
     } else {
-      this.authSvc.addWish(userId, product.id).subscribe(() => {
-        console.log('Prodotto aggiunto alla wishlist con successo!');
-        product.isInWishlist = true;
-      }, error => {
-        console.error('Errore nell\'aggiungere alla wishlist', error);
+      this.authSvc.addWish(userId, product.id).subscribe({
+        next: () => {
+          console.log('Prodotto aggiunto alla wishlist con successo!');
+          product.isInWishlist = true;
+        },
+        error: (error) => {
+          console.error('Errore nell\'aggiungere alla wishlist', error);
+        }
       });
     }
+
   }
 
   filterByCategory(category: string): void {
