@@ -13,7 +13,8 @@ Idee:
 
 
 -crud
--carrello
+
+
   -procedura di acquisto
   -checkout
 

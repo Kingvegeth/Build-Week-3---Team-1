@@ -9,4 +9,5 @@ export interface iProduct {
   available:boolean
   quantity:number
   isInWishlist:boolean
+  isInCart:boolean
 }

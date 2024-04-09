@@ -10,8 +10,10 @@ import { ProductsService } from '../../products.service';
 })
 export class CartComponent {
 
+  products: iProduct[] = [];
 
   currentUserCartProducts: iProduct[] = [];
+  productCount: {[productId: number]: number} = {};
 
 
   constructor(private authService: AuthService, private productsService: ProductsService) { }
@@ -21,12 +23,40 @@ export class CartComponent {
   }
 
 
+  addToCart(product: iProduct): void {
+    console.log('Aggiunta al carrello in corso...');
+
+    const userId = this.authService.getCurrentUserId();
+    if (!userId) {
+      console.error('ID utente non valido');
+      return;
+    }
+
+    this.authService.addCart(userId, product.id).subscribe({
+      next: () => {
+        console.log('Prodotto aggiunto al carrello con successo!');
+
+      },
+      error: (error) => {
+        console.error('Errore nell\'aggiungere al carrello', error);
+
+      }
+    });
+  }
 
   loadCart(): void {
     this.authService.user$.subscribe(user => {
       if (user && user.cart && user.cart.length > 0) {
+        const productCount: {[productId: number]: number} = {};
+        user.cart.forEach((productId) => {
+          productCount[productId] = (productCount[productId] || 0) + 1;
+        });
         this.productsService.getCart(user.cart).subscribe(products => {
           this.currentUserCartProducts = products;
+          this.currentUserCartProducts.forEach(product => {
+            product.isInCart = (productCount[product.id] || 0) >= 2;
+          });
+          this.productCount = productCount;
         });
       } else {
         this.currentUserCartProducts = [];
@@ -50,8 +80,6 @@ export class CartComponent {
     }
   }
 
-  countProductInCart(productId: number): number {
-    return this.currentUserCartProducts.filter(product => product.id === productId).length;
-  }
+
 
 }

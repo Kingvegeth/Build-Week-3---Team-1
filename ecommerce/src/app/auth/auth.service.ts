@@ -172,10 +172,21 @@ export class AuthService {
     return this.http.get<any>(url).pipe(
       tap(user => {
         const cart = Array.isArray(user.cart) ? user.cart : [];
-        if (cart.includes(productId)) {
-          const updatedcart = cart.filter((id: number) => id !== productId);
-          const updatedUser = { ...user, cart: updatedcart };
-          this.http.patch<any>(url, { cart: updatedcart }).subscribe(() => {
+        let removed = false;
+
+        const updatedCart = cart.reduce((acc:any, curId:any) => {
+          if (curId === productId && !removed) {
+            removed = true;
+            return acc;
+          } else {
+            acc.push(curId);
+            return acc;
+          }
+        }, []);
+
+        if (removed) {
+          const updatedUser = { ...user, cart: updatedCart };
+          this.http.patch<any>(url, { cart: updatedCart }).subscribe(() => {
             this.authSubject.next(updatedUser);
           });
         }
