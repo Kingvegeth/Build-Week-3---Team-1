@@ -13,16 +13,16 @@
  .btn:hover {
   border-radius: 5px;
   transform: translateY(-10px);
-  box-shadow: 5px 7px 0 -2px #39a2db,
-   10px 15px 0 -4px #cb2376,
-   10px 16px 10px -3px #cb2376;
+  box-shadow: 5px 7px 0 -2px #cb2376,
+   10px 15px 0 -4px #39a2db,
+   10px 16px 10px -3px #39a2db;
  }
 
  .btn:active {
   transition: all 0.2s;
   transform: translateY(-5px);
   background-color: #6D1666;
-  box-shadow: 5px 2px 0 -2px #39a2db,
-   10px 8px 0 -4px #cb2376,
-   10px 12px 10px -3px #cb2376;
+  box-shadow: 5px 2px 0 -2px #cb2376,
+   10px 8px 0 -4px #39a2db,
+   10px 12px 10px -3px #39a2db;
  }

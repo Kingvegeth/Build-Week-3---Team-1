@@ -25,7 +25,8 @@
       ],
       "cart": [
         4,
-        2,
+        3,
+        8,
         3
       ]
     }
@@ -68,7 +69,7 @@
       "category": "Libri",
       "price": 134.34,
       "name": "Vero",
-      "brand": "Barberini, Paoletti e Zola e figli",
+      "brand": "Barberini",
       "productImg": "https://picsum.photos/200/300?random=4",
       "description": "Laborum ratione autem dicta odit ipsum quam.",
       "available": true,
@@ -90,7 +91,7 @@
       "category": "Abbigliamento",
       "price": 498.03,
       "name": "Ab",
-      "brand": "Bianchi, Naccari e Bonaventura e figli",
+      "brand": "Bianchi ",
       "productImg": "https://picsum.photos/200/300?random=6",
       "description": "Quam nemo repudiandae dolorum harum hic repudiandae consectetur soluta a nostrum in alias.",
       "available": true,

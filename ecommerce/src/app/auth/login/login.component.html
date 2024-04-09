@@ -12,9 +12,9 @@
         <input type="checkbox" class="form-check-input" id="rememberMe" [(ngModel)]="rememberMe" name="rememberMe">
         <label class="form-check-label" for="rememberMe">Ricordami</label>
       </div>
+      <button type="submit" class="btn mt-2 ms-auto">Accedi</button>
       <div *ngIf="errorMessage" class="text-danger fw-bold" role="alert">{{ errorMessage }}</div>
     </div>
 
-    <button type="submit" class="btn mt-2 ms-auto">Accedi</button>
   </form>
 </div>
