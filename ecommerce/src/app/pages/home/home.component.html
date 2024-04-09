@@ -31,7 +31,7 @@
             <button *ngIf="!isAdmin" class="btn btn-primary" [disabled]="!product.available" (click)="addToCart(product)">
               <i class="fas fa-shopping-cart"></i> Aggiungi al carrello
             </button>
-            <button *ngIf="isAdmin" class="btn btn-secondary">Modifica</button>
+            <button *ngIf="isAdmin" [routerLink]="['/edit-product',product.id]" class="btn btn-secondary">Modifica</button>
             <div *ngIf="!isAdmin" >
               <i class="text-white" (click)="toggleWishlist(product)"  [ngClass]="product.isInWishlist ? 'fas fa-heart' : 'far fa-heart'"></i>
             </div>
@@ -57,7 +57,7 @@
           <p class="ms-auto pe-3">Prezzo: {{product.price | currency:'EUR':'symbol'}}</p>
           <div class="card-footer d-flex justify-content-between align-items-center">
             <button *ngIf="!isAdmin" (click)="addToCart(product)" class="btn btn-primary" [disabled]="!product.available"><i class="fas fa-shopping-cart"></i></button>
-            <button *ngIf="isAdmin" class="btn btn-secondary">Modifica</button>
+            <button *ngIf="isAdmin" [routerLink]="['/edit-product',product.id]" class="btn btn-secondary">Modifica</button>
             <div *ngIf="!isAdmin">
               <i class="text-white" (click)="toggleWishlist(product)" [ngClass]="product.isInWishlist ? 'fas fa-heart' : 'far fa-heart'"></i>
             </div>

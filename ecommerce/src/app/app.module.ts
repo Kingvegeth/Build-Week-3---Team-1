@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './pages/cart/cart.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { EditProductComponent } from './pages/edit-product/edit-product.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,13 +21,15 @@ import { ProfileComponent } from './pages/profile/profile.component';
     HeaderComponent,
     CartComponent,
     WishlistComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

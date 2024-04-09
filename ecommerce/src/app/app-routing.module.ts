@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AuthGuard } from './auth/auth.guard';
 import { CartComponent } from './pages/cart/cart.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { EditProductComponent } from './pages/edit-product/edit-product.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path:'wishlist',
     component:WishlistComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'edit-product/:id',
+    component:EditProductComponent,
     canActivate: [AuthGuard]
   }
 ];

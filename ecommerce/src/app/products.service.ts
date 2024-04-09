@@ -44,6 +44,25 @@ export class ProductsService {
     );
   }
 
+  getProductById(id: number): Observable<iProduct> {
+    const url = `${this.productsUrl}/${id}`;
+    return this.http.get<iProduct>(url);
+  }
+
+  updateProduct(product: iProduct): Observable<any> {
+    const url = `${this.productsUrl}/${product.id}`;
+    return this.http.put(url, product).pipe(
+      tap(() => {
+        const index = this.productsCache.findIndex(p => p.id === product.id);
+        if (index !== -1) {
+          this.productsCache[index] = product;
+          this.productsSubject.next(this.productsCache);
+        }
+      })
+    );
+  }
+
+
   getUniqueCategories(): Observable<string[]> {
     return this.getAll().pipe(
       map(products => [...new Set(products.map(product => product.category))])
