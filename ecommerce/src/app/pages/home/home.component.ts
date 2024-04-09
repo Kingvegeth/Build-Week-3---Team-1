@@ -12,6 +12,8 @@ import { iProduct } from '../../Models/iproduct';
 export class HomeComponent {
 
   products: iProduct[] = [];
+  productsInOrder: iProduct[] = [];
+
   categories: string[] = [];
   filteredProducts: iProduct[] = [];
   showFiltered: boolean = false;
@@ -24,6 +26,10 @@ export class HomeComponent {
   constructor(private productsSvc: ProductsService, private authSvc: AuthService) { }
 
   ngOnInit(): void {
+    this.loadProducts()
+  }
+
+  loadProducts(){
     this.productsSvc.getAll().subscribe(allProducts => {
       this.products = allProducts;
     });
@@ -41,6 +47,8 @@ export class HomeComponent {
       this.categories = categories;
     });
   }
+
+
 
   toggleWishlist(product: iProduct): void {
     const userId = this.authSvc.getCurrentUserId();

@@ -7,14 +7,19 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  scrolled = false;
-  isUserLoggedIn = false;
+  scrolled:boolean = false;
+  isUserLoggedIn:boolean = false;
+  isAdmin:boolean = false
 
   constructor(public authSvc: AuthService) {}
 
   ngOnInit() {
     this.authSvc.isLoggedIn$.subscribe(data => {
       this.isUserLoggedIn = data;
+    });
+    this.authSvc.user$.subscribe(user => {
+      this.isAdmin = !!user && user.admin;
+
     });
   }
 
@@ -30,4 +35,5 @@ export class HeaderComponent {
       this.scrolled = false;
     }
   }
+
 }

@@ -101,6 +101,12 @@ export class AuthService {
     },expMs)
   }
 
+  isAdmin(): Observable<boolean> {
+    return this.user$.pipe(
+      map(user => !!user && user.admin)
+    );
+  }
+
 
   restoreUser() {
 

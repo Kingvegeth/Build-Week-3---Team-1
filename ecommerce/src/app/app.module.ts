@@ -16,6 +16,7 @@ import { AddProductComponent } from './pages/add-product/add-product.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { AddProductComponent } from './pages/add-product/add-product.component';
     ProfileComponent,
     EditProductComponent,
     AddProductComponent
+
   ],
   imports: [
     BrowserModule,

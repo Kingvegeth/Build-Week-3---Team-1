@@ -1,3 +1,4 @@
+import { NotAdminGuard } from './auth/not-admin.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GuestGuard } from './auth/guest.guard';
@@ -7,6 +8,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { AddProductComponent } from './pages/add-product/add-product.component';
+import { AdminGuard } from './auth/admin.guard';
 
 const routes: Routes = [
   {
@@ -27,22 +29,22 @@ const routes: Routes = [
   {
     path:'cart',
     component:CartComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, NotAdminGuard]
   },
   {
     path:'wishlist',
     component:WishlistComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, NotAdminGuard]
   },
   {
     path:'edit-product/:id',
     component:EditProductComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, AdminGuard]
   },
   {
     path:'add-product',
     component:AddProductComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, AdminGuard]
   }
 ];
 

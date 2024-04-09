@@ -23,7 +23,6 @@
         4
       ],
       "cart": [
-        3,
         4,
         2
       ]
@@ -32,6 +31,71 @@
   "products": [
     {
       "id": 1,
+      "category": "Giardinaggio",
+      "price": 404.07,
+      "name": "Enim",
+      "brand": "Gemito s.r.l.",
+      "productImg": "https://picsum.photos/200/300?random=1",
+      "description": "Tempora hic explicabo adipisci distinctio voluptatum ipsam dolorem.",
+      "available": false,
+      "quantity": 28
+    },
+    {
+      "id": 2,
+      "category": "Libri",
+      "price": 39.78,
+      "name": "Enimf",
+      "brand": "Michelangeli SPA",
+      "productImg": "https://picsum.photos/200/300?random=2",
+      "description": "Quas fugiat culpa id sed aliquid odit.",
+      "available": true,
+      "quantity": 98
+    },
+    {
+      "id": 3,
+      "category": "Giardinaggio",
+      "price": 346.34,
+      "name": "Mollitia",
+      "brand": "Santi-Oscuro s.r.l.",
+      "productImg": "https://picsum.photos/200/300?random=3",
+      "description": "Eos repellendus itaque voluptatem tempore necessitatibus expedita similique fugiat minima in quas optio.",
+      "available": true
+    },
+    {
+      "id": 4,
+      "category": "Libri",
+      "price": 134.34,
+      "name": "Vero",
+      "brand": "Barberini, Paoletti e Zola e figli",
+      "productImg": "https://picsum.photos/200/300?random=4",
+      "description": "Laborum ratione autem dicta odit ipsum quam.",
+      "available": true,
+      "quantity": 82
+    },
+    {
+      "id": 5,
+      "category": "Elettronica",
+      "price": 22.63,
+      "name": "Enim",
+      "brand": "Ricci e figli",
+      "productImg": "https://picsum.photos/200/300?random=5",
+      "description": "Ab aut sit placeat repudiandae modi cum mollitia modi officia veritatis dolores autem voluptatem perferendis.",
+      "available": true,
+      "quantity": 82
+    },
+    {
+      "id": 6,
+      "category": "Abbigliamento",
+      "price": 498.03,
+      "name": "Ab",
+      "brand": "Bianchi, Naccari e Bonaventura e figli",
+      "productImg": "https://picsum.photos/200/300?random=6",
+      "description": "Quam nemo repudiandae dolorum harum hic repudiandae consectetur soluta a nostrum in alias.",
+      "available": true,
+      "quantity": 59
+    },
+    {
+      "id": 7,
       "name": "La Bibbia",
       "brand": "Dio",
       "description": "Il Best-seller Fantasy che più letto in Epicode",
@@ -41,7 +105,7 @@
       "price": 6.66
     },
     {
-      "id": 2,
+      "id": 8,
       "name": "La Bibbia 2 - Cristo Returns",
       "brand": "Dio",
       "description": "Ponzio, prova a lavarti le mani dopo che te le ho staccate!",
