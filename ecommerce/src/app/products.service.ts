@@ -44,6 +44,24 @@ export class ProductsService {
     return this.http.get<iProduct>(url);
   }
 
+  orderedByPrice(order: string): Observable<iProduct[]> {
+    return this.getAll().pipe(
+      map(products =>
+        products.sort((a, b) => {
+          if (order === 'incr') {
+            return a.price - b.price;
+          } else if (order === 'decr') {
+            return b.price - a.price;
+          } else {
+            return 0;
+          }
+        })
+      )
+    );
+  }
+
+
+
   updateProduct(product: iProduct): Observable<any> {
     const url = `${this.productsUrl}/${product.id}`;
     return this.http.put(url, product).pipe(

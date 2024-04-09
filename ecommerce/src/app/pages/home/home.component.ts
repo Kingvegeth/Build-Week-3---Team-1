@@ -27,11 +27,13 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.loadProducts()
+
   }
 
   loadProducts(){
     this.productsSvc.getAll().subscribe(allProducts => {
       this.products = allProducts;
+      console.log(this.products);
     });
 
     this.authSvc.user$.subscribe(user => {
@@ -48,7 +50,20 @@ export class HomeComponent {
     });
   }
 
+  orderByPrice(order: string): void {
+    const sourceProducts = this.showFiltered ? this.filteredProducts : this.products;
 
+    this.productsSvc.orderedByPrice(order).subscribe(orderedProducts => {
+      const orderedFilteredProducts = orderedProducts.filter(product =>
+        sourceProducts.some(p => p.id === product.id)
+      );
+      if (this.showFiltered) {
+        this.filteredProducts = orderedFilteredProducts;
+      } else {
+        this.products = orderedFilteredProducts;
+      }
+    });
+  }
 
   toggleWishlist(product: iProduct): void {
     const userId = this.authSvc.getCurrentUserId();
