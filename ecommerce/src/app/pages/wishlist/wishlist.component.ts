@@ -13,7 +13,7 @@ export class WishlistComponent {
   currentUserWishlistProducts: iProduct[] = [];
   isAdmin: boolean = false;
 
-  constructor(private authService: AuthService, private productsService: ProductsService) { }
+  constructor(private authSvc: AuthService, private productsSvc: ProductsService) { }
 
   ngOnInit(): void {
     this.loadWishlist();
@@ -23,9 +23,9 @@ export class WishlistComponent {
 
 
   loadWishlist(): void {
-    this.authService.user$.subscribe(user => {
+    this.authSvc.user$.subscribe(user => {
       if (user && user.wishlist && user.wishlist.length > 0) {
-        this.productsService.getWishlist(user.wishlist).subscribe(products => {
+        this.productsSvc.getWishlist(user.wishlist).subscribe(products => {
           this.currentUserWishlistProducts = products;
         });
       } else {
@@ -35,15 +35,15 @@ export class WishlistComponent {
   }
 
   checkAdminStatus(): void {
-    this.authService.user$.subscribe(user => {
+    this.authSvc.user$.subscribe(user => {
       this.isAdmin = !!user && user.admin;
     });
   }
 
   removeFromWishlist(productId: number): void {
-    const userId = this.authService.getCurrentUserId();
+    const userId = this.authSvc.getCurrentUserId();
     if (userId) {
-      this.authService.deleteWish(userId, productId).subscribe({
+      this.authSvc.deleteWish(userId, productId).subscribe({
         next: () => {
           console.log('Prodotto rimosso dalla wishlist con successo!');
           this.currentUserWishlistProducts = this.currentUserWishlistProducts.filter(product => product.id !== productId);

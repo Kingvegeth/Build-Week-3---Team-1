@@ -10,8 +10,6 @@ Idee:
 -selezione categoria preferita alla registrazione
 
 
-
-
   -procedura di acquisto
   -checkout
 

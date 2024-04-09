@@ -14,7 +14,7 @@ export class EditProductComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private productsService: ProductsService,
+    private productsSvc: ProductsService,
     private router: Router
   ) { }
 
@@ -24,12 +24,12 @@ export class EditProductComponent {
 
   getProduct(): void {
     const id = +this.route.snapshot.paramMap.get('id')!;
-    this.productsService.getProductById(id).subscribe(product => this.product = product);
+    this.productsSvc.getProductById(id).subscribe(product => this.product = product);
   }
 
   saveProduct(): void {
     if (this.product) {
-      this.productsService.updateProduct(this.product).subscribe(() => {
+      this.productsSvc.updateProduct(this.product).subscribe(() => {
         this.router.navigate(['/home']);
       });
     }
@@ -37,7 +37,7 @@ export class EditProductComponent {
 
   deleteProduct(productId: number): void {
     if(confirm("Sei sicuro di voler eliminare questo prodotto?")) {
-      this.productsService.deleteProduct(productId).subscribe({
+      this.productsSvc.deleteProduct(productId).subscribe({
         next: () => {
           console.log('Prodotto eliminato con successo');
           this.router.navigate(['/home']);
