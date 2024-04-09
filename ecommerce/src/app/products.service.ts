@@ -34,6 +34,10 @@ export class ProductsService {
     return of(this.productsCache.filter(product => wishlistedIds.includes(product.id)));
   }
 
+  getCart(addedToCartIds: number[]): Observable<iProduct[]> {
+    return of(this.productsCache.filter(product => addedToCartIds.includes(product.id)));
+  }
+
   getProductsByCategory(category: string): Observable<iProduct[]> {
     return this.getAll().pipe(
       map(products => products.filter(product => product.category.includes(category)))

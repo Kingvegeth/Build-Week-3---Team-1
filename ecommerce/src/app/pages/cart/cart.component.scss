@@ -1,0 +1,23 @@
+.card {
+
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+
+  background-color: rgba(42, 46, 78, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.card-img-top {
+
+  max-height: 150px;
+  object-fit: cover;
+}
+
+.card-body {
+
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

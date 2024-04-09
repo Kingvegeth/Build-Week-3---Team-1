@@ -1,6 +1,6 @@
 .card {
-  /* Regola l'altezza massima della card per renderla meno alta */
-  max-height: 500px; /* Ajusta questo valore secondo le tue necessità */
+
+  max-height: 500px;
   display: flex;
   flex-direction: column;
 
@@ -9,15 +9,15 @@
 }
 
 .card-img-top {
-  /* Limita l'altezza dell'immagine per evitare che occupi troppo spazio */
-  max-height: 150px; /* Ajusta questo valore secondo le tue necessità */
-  object-fit: cover; /* Mantiene le proporzioni dell'immagine */
+
+  max-height: 150px;
+  object-fit: cover;
 }
 
 .card-body {
-  /* Assicura che il corpo della card occupi tutto lo spazio disponibile */
+
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Distribuisce uniformemente lo spazio */
+  justify-content: space-between;
 }

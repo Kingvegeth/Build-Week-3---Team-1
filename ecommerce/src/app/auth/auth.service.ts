@@ -152,6 +152,47 @@ export class AuthService {
     );
   }
 
+  addCart(userId: number, productId: number): Observable<any> {
+    const url = `${environment.usersUrl}/${userId}`;
+    return this.http.get<any>(url).pipe(
+      tap(user => {
+        const cart = Array.isArray(user.cart) ? user.cart : [];
+
+          const updatedcart = [...cart, productId];
+          const updatedUser = { ...user, cart: updatedcart };
+          this.http.patch<any>(url, { cart: updatedcart }).subscribe(() => {
+            this.authSubject.next(updatedUser);
+          });
+
+      })
+    );
+  }
+  deleteCart(userId: number, productId: number): Observable<any> {
+    const url = `${environment.usersUrl}/${userId}`;
+    return this.http.get<any>(url).pipe(
+      tap(user => {
+        const cart = Array.isArray(user.cart) ? user.cart : [];
+        if (cart.includes(productId)) {
+          const updatedcart = cart.filter((id: number) => id !== productId);
+          const updatedUser = { ...user, cart: updatedcart };
+          this.http.patch<any>(url, { cart: updatedcart }).subscribe(() => {
+            this.authSubject.next(updatedUser);
+          });
+        }
+      })
+    );
+  }
+
+  countProductInCart(productId: number): Observable<number> {
+    return this.user$.pipe(
+      map(user => {
+        if (!user || !user.cart) {
+          return 0;
+        }
+        return user.cart.filter(id => id === productId).length;
+      })
+    );
+  }
 
   errors(err: any) {
     switch (err.error) {
