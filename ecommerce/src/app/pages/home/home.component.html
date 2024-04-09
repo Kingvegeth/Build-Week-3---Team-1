@@ -4,17 +4,18 @@
     <input type="search" class="form-control" (input)="showSearch($event)" placeholder="Cerca prodotti...">
   </form>
 
-
-  <div class="d-flex gap-1 mb-4">
+<div class="d-flex justify-content-between align-items-center">
+  <div class="d-flex gap-1 mb-2">
     <button class="btn btn-success rounded-5" (click)="showAllProducts()">Tutto</button>
     <div *ngFor="let category of categories">
       <button class="btn btn-secondary rounded-5" (click)="filterByCategory(category)">{{category}}</button>
     </div>
   </div>
+  <i *ngIf="isAdmin" routerLink="/add-product" role="button" class="add-product fa-plus mb-4"></i>
+</div>
 
 
   <div *ngIf="showFiltered; else allProductsTemplate">
-    <h2>Risultati per {{searchTerms}}</h2>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
       <div class="col mb-4" *ngFor="let product of filteredProducts">
 

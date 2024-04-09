@@ -6,15 +6,14 @@ import { ProductsService } from '../../products.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.scss'
+  styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
 
   products: iProduct[] = [];
-
   currentUserCartProducts: iProduct[] = [];
-  productCount: {[productId: number]: number} = {};
-
+  productCount: { [productId: number]: number } = {};
+  totalCartPrice: number = 0;
 
   constructor(private authService: AuthService, private productsService: ProductsService) { }
 
@@ -22,10 +21,8 @@ export class CartComponent {
     this.loadCart();
   }
 
-
   addToCart(product: iProduct): void {
     console.log('Aggiunta al carrello in corso...');
-
     const userId = this.authService.getCurrentUserId();
     if (!userId) {
       console.error('ID utente non valido');
@@ -35,11 +32,10 @@ export class CartComponent {
     this.authService.addCart(userId, product.id).subscribe({
       next: () => {
         console.log('Prodotto aggiunto al carrello con successo!');
-
+        this.updateTotalCartPrice();
       },
       error: (error) => {
         console.error('Errore nell\'aggiungere al carrello', error);
-
       }
     });
   }
@@ -47,7 +43,7 @@ export class CartComponent {
   loadCart(): void {
     this.authService.user$.subscribe(user => {
       if (user && user.cart && user.cart.length > 0) {
-        const productCount: {[productId: number]: number} = {};
+        const productCount: { [productId: number]: number } = {};
         user.cart.forEach((productId) => {
           productCount[productId] = (productCount[productId] || 0) + 1;
         });
@@ -57,13 +53,13 @@ export class CartComponent {
             product.isInCart = (productCount[product.id] || 0) >= 2;
           });
           this.productCount = productCount;
+          this.updateTotalCartPrice();
         });
       } else {
         this.currentUserCartProducts = [];
       }
     });
   }
-
 
   removeFromCart(productId: number): void {
     const userId = this.authService.getCurrentUserId();
@@ -72,6 +68,7 @@ export class CartComponent {
         next: () => {
           console.log('Prodotto rimosso dal carrello con successo!');
           this.currentUserCartProducts = this.currentUserCartProducts.filter(product => product.id !== productId);
+          this.updateTotalCartPrice();
         },
         error: (error) => console.error('Errore nella rimozione dal carrello', error)
       });
@@ -81,5 +78,10 @@ export class CartComponent {
   }
 
 
+  updateTotalCartPrice(): void {
+    this.totalCartPrice = this.currentUserCartProducts.reduce((total, product) => {
+      return total + (product.price * (this.productCount[product.id] || 1));
+    }, 0);
+  }
 
 }

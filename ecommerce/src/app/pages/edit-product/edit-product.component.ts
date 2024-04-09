@@ -35,4 +35,16 @@ export class EditProductComponent {
     }
   }
 
+  deleteProduct(productId: number): void {
+    if(confirm("Sei sicuro di voler eliminare questo prodotto?")) {
+      this.productsService.deleteProduct(productId).subscribe({
+        next: () => {
+          console.log('Prodotto eliminato con successo');
+          this.router.navigate(['/home']);
+        },
+        error: (err) => console.error('Errore durante l\'eliminazione del prodotto:', err)
+      });
+    }
+  }
+
 }

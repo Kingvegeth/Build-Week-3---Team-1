@@ -1,7 +1,5 @@
-<div *ngIf="product" class="text-white col-10 col-md-8 col-lg-6 mx-auto ">
-  <h1 class="mt-5 mb-2">Modifica Prodotto</h1>
-
-  <h4 class="mb-4">#ID {{product.id}}</h4>
+<div class="text-white col-10 col-md-8 col-lg-6 mx-auto ">
+  <h1 class="mt-5 mb-2">Aggiungi Nuovo Prodotto</h1>
 
   <form class="d-flex flex-column gap-3" (ngSubmit)="saveProduct()">
 
@@ -10,18 +8,15 @@
       <input [(ngModel)]="product.name" name="name" id="name" required class="form-control">
     </div>
 
-
     <div class="form-group">
       <label for="category" class="mb-2">Categoria</label>
       <input [(ngModel)]="product.category" name="category" id="category" required class="form-control">
     </div>
 
-
     <div class="form-group">
       <label for="price" class="mb-2">Prezzo</label>
       <input [(ngModel)]="product.price" name="price" type="number" id="price" required class="form-control">
     </div>
-
 
     <div class="form-group">
       <label for="brand" class="mb-2">Marca</label>
@@ -38,13 +33,11 @@
       <textarea [(ngModel)]="product.description" name="description" id="description" required class="form-control"></textarea>
     </div>
 
-
     <div class="form-group form-check">
       <input [(ngModel)]="product.available" name="available" type="checkbox" id="available" class="form-check-input">
       <label for="available" class="form-check-label">Disponibile</label>
     </div>
 
-    <button type="submit" class="btn btn-primary">Salva Modifiche</button>
-    <button type="button" class="btn btn-danger" (click)="deleteProduct(product.id)">Elimina Prodotto</button>
+    <button type="submit" class="btn btn-primary">Aggiungi Prodotto</button>
   </form>
 </div>

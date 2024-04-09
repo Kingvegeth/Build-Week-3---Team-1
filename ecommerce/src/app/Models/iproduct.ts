@@ -7,7 +7,7 @@ export interface iProduct {
   productImg:string
   description:string
   available:boolean
-  quantity:number
-  isInWishlist:boolean
-  isInCart:boolean
+  quantity?:number
+  isInWishlist?:boolean
+  isInCart?:boolean
 }

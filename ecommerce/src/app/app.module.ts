@@ -12,6 +12,8 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { FormsModule } from '@angular/forms';
+import { AddProductComponent } from './pages/add-product/add-product.component';
+
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     CartComponent,
     WishlistComponent,
     ProfileComponent,
-    EditProductComponent
+    EditProductComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

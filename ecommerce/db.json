@@ -23,10 +23,9 @@
         4
       ],
       "cart": [
-        1,
-        2,
         3,
-        4
+        4,
+        2
       ]
     }
   ],
@@ -50,26 +49,6 @@
       "productImg": "https://picsum.photos/200/300",
       "category": "Libri",
       "price": 69
-    },
-    {
-      "id": 3,
-      "name": "Tv bella",
-      "brand": "LG",
-      "description": "9001 pollici di puro godimento!",
-      "available": true,
-      "productImg": "https://picsum.photos/200/300",
-      "category": "Elettronica",
-      "price": 9999
-    },
-    {
-      "id": 4,
-      "name": "Mike è bello",
-      "brand": "Captain Mike",
-      "description": "!important e altre utilissime Best Practices",
-      "available": true,
-      "productImg": "https://i.postimg.cc/SxhnSH3J/bestpractice.png",
-      "category": "Libri",
-      "price": 9999
     }
   ]
 }

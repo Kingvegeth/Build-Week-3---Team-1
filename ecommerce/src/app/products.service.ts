@@ -12,6 +12,7 @@ export class ProductsService {
   private productsUrl = environment.productsUrl;
   private productsCache: iProduct[] = [];
   private productsSubject = new BehaviorSubject<iProduct[]>([]);
+  public products$ = this.productsSubject.asObservable();
 
   constructor(private http: HttpClient) {
     this.getAll().subscribe(data => {
@@ -21,13 +22,7 @@ export class ProductsService {
   }
 
   getAll(): Observable<iProduct[]> {
-    if (this.productsCache.length > 0) {
-      return of(this.productsCache);
-    } else {
-      return this.http.get<iProduct[]>(this.productsUrl).pipe(
-        tap(data => this.productsCache = data)
-      );
-    }
+    return this.http.get<iProduct[]>(this.productsUrl)
   }
 
   getWishlist(wishlistedIds: number[]): Observable<iProduct[]> {
@@ -61,6 +56,27 @@ export class ProductsService {
       })
     );
   }
+
+  deleteProduct(productId: number): Observable<any> {
+    const url = `${this.productsUrl}/${productId}`;
+    return this.http.delete(url).pipe(
+      tap(() => this.removeProductFromList(productId))
+    );
+  }
+
+  removeProductFromList(productId: number): void {
+    const currentProducts = this.productsSubject.value;
+    const updatedProducts = currentProducts.filter(product => product.id !== productId);
+    this.productsSubject.next(updatedProducts);
+  }
+
+  addProduct(product: iProduct): Observable<iProduct> {
+    return this.http.post<iProduct>(this.productsUrl, product)
+    .pipe(tap(()=>{
+    this.getAll().subscribe(dato=>this.productsSubject.next(dato))
+    }));
+  }
+
 
 
   getUniqueCategories(): Observable<string[]> {
