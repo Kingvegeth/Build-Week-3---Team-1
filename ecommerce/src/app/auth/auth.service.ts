@@ -142,6 +142,7 @@ export class AuthService {
       })
     );
   }
+
   deleteWish(userId: number, productId: number): Observable<any> {
     const url = `${environment.usersUrl}/${userId}`;
     return this.http.get<any>(url).pipe(
@@ -163,23 +164,21 @@ export class AuthService {
     return this.http.get<any>(url).pipe(
       tap(user => {
         const cart = Array.isArray(user.cart) ? user.cart : [];
-
           const updatedcart = [...cart, productId];
           const updatedUser = { ...user, cart: updatedcart };
           this.http.patch<any>(url, { cart: updatedcart }).subscribe(() => {
             this.authSubject.next(updatedUser);
           });
-
       })
     );
   }
+
   deleteCart(userId: number, productId: number): Observable<any> {
     const url = `${environment.usersUrl}/${userId}`;
     return this.http.get<any>(url).pipe(
       tap(user => {
         const cart = Array.isArray(user.cart) ? user.cart : [];
         let removed = false;
-
         const updatedCart = cart.reduce((acc:any, curId:any) => {
           if (curId === productId && !removed) {
             removed = true;
@@ -189,7 +188,6 @@ export class AuthService {
             return acc;
           }
         }, []);
-
         if (removed) {
           const updatedUser = { ...user, cart: updatedCart };
           this.http.patch<any>(url, { cart: updatedCart }).subscribe(() => {
@@ -217,16 +215,16 @@ export class AuthService {
             return new Error('Email e password obbligatorie');
             break;
         case "Email already exists":
-            return new Error('Utente esistente');
+            return new Error('Email già registrata');
             break;
         case 'Email format is invalid':
             return new Error('Email scritta male');
             break;
         case 'Cannot find user':
-            return new Error('utente inesistente');
+            return new Error('Utente non trovare');
             break;
             default:
-        return new Error('Errore');
+        return new Error('Qualcosa è andato storto!');
             break;
     }
   }

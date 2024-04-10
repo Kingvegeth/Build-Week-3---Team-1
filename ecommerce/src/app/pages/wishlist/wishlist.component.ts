@@ -55,4 +55,27 @@ export class WishlistComponent {
     }
   }
 
+  addToCart(product: iProduct): void {
+    console.log('Aggiunta al carrello in corso...');
+
+    const userId = this.authSvc.getCurrentUserId();
+    if (!userId) {
+      console.error('ID utente non valido');
+      return;
+    }
+
+    this.authSvc.addCart(userId, product.id).subscribe({
+      next: () => {
+        console.log('Prodotto aggiunto al carrello con successo!');
+
+      },
+      error: (error) => {
+        console.error('Errore nell\'aggiungere al carrello', error);
+
+      }
+    });
+  }
+
+
+
 }

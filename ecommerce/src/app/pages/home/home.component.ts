@@ -97,10 +97,6 @@ export class HomeComponent {
   }
 
 
-  ciao(){
-    console.log('ciao');
-
-  }
 
 
 

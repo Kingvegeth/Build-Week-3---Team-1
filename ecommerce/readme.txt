@@ -3,7 +3,7 @@ Idee:
 
 -ordine prodotti random
 
--criteri di ordine dei prodotti
+-criteri di ordine dei prodotti - Fatto ordine per prezzo
 
 
 
@@ -11,10 +11,9 @@ Idee:
 
 
   -procedura di acquisto
+
   -checkout
 
 
 -portafogli
 
-
--cambiare altezza card - immagine troppo piccola

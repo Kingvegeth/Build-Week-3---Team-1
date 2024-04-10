@@ -1,4 +1,4 @@
-<h1 class="my-5 text-white">La tua lista dei desideri</h1>
+<!-- <h1 class="my-5 text-white">La tua lista dei desideri</h1>
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
   <div class="col mb-4" *ngFor="let product of currentUserWishlistProducts">
     <div class="card text-white h-100">
@@ -19,6 +19,50 @@
 </div>
   <ng-template #emptyWishlist>
     <p>La tua Wishlist è vuota.</p>
+  </ng-template> -->
+  <div *ngIf="currentUserWishlistProducts.length>0; else emptyWishlist">
+    <h1 class="my-5 text-white">La tua lista dei desideri</h1>
+    <div class="shell">
+      <div class="container">
+        <div class="row  row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+          <div class="col" *ngFor="let product of currentUserWishlistProducts">
+            <div class="wsk-cp-product ">
+              <div class="wsk-cp-img">
+                <img
+                [src]="product.productImg"
+                class="img-responsive"
+                [alt]="product.name"
+                />
+              </div>
+              <div class="wsk-cp-text">
+                <div class="category">
+                  <span>{{ product.brand }}</span>
+                </div>
+                <div class="title-product">
+                  <h3>{{ product.name }}</h3>
+                </div>
+                <div class="description-prod">
+                  <p>{{(product.description| slice:0:50) + '...'}}</p>
+                </div>
+                <div class="card-footer pt-2 d-flex align-items-center justify-content-between">
+                  <div class="wcf-left"><span class="price fs-4">{{ product.price | currency : "EUR" : "symbol" }}</span></div>
+                  <div class="d-flex align-items-center justify-content-end">
+
+                    <button *ngIf="isAdmin"[routerLink]="['/edit-product', product.id]" class="btn btn-secondary">Modifica</button>
+
+                    <i role="button" class="remove-btn text-white me-3 fas fa-times"(click)="removeFromWishlist(product.id)"></i>
+                    <button *ngIf="!isAdmin" class="buy-btn text-white rounded-5 border-0  wcf-right" [disabled]="!product.available" (click)="addToCart(product)">
+                      <i class="fas fa-shopping-cart"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #emptyWishlist>
+    <h1 class="my-5 text-white">La tua lista dei desideri è vuota.</h1>
   </ng-template>
-
-

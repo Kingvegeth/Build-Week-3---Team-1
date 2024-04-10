@@ -108,10 +108,10 @@
 //   background-color: #ffcaa6;
 //  }
 
- @import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i');
 body{
   font-family: 'Muli', sans-serif;
-  background:#ddd;
+  background:#fff;
 }
 
 .wsk-cp-product{
@@ -222,10 +222,7 @@ body{
   border-top: 1px solid #ddd;
   color: white;
 }
-.card-footer:after, .card-footer:before{
-  content:'';
-  display:table;
-}
+
 .card-footer:after{
   clear:both;
 }
@@ -245,9 +242,10 @@ body{
   color: white;
 }
 
-a.buy-btn{
+button.buy-btn{
   display:block;
   color: white;
+  background: none;
   text-align:center;
   font-size: 18px;
   width:35px;
@@ -257,7 +255,7 @@ a.buy-btn{
   border:1px solid #212121;
   transition: all 0.2s ease-in-out;
 }
-a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus{
+button.buy-btn:hover , button.buy-btn:active, button.buy-btn:focus{
   border-color: #6D1666;
   background: #6D1666;
   color: white;
@@ -303,9 +301,35 @@ a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus{
 .wsk-cp-product .wsk-cp-text .category{
   margin-top: 0px;
 }
-a.buy-btn{
+button.buy-btn{
   border-color: #6D1666;
   background: #6D1666;
   color: #fff;
 }
+.wish-btn{
+  border-color: #20a100;
+  background: #20a100;
+  color: #fff;
 }
+}
+
+.wish-btn{
+  display:block;
+  color: white;
+  background: none;
+  text-align:center;
+  font-size: 18px;
+  width:35px;
+  height:35px;
+  line-height:35px;
+  border-radius:50%;
+  border:1px solid #212121;
+  transition: all 0.2s ease-in-out;
+}
+.wish-btn:hover , .wish-btn:active, .wish-btn:focus{
+  border-color: #20a100;
+  background: #20a100;
+  color: white;
+  text-decoration:none;
+}
+
