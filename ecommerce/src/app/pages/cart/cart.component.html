@@ -63,8 +63,10 @@
           </div>
         </div>
         <hr>
-        <input [(ngModel)]="couponCode" name="coupon" type="text" placeholder="Inserisci codice Magalli">
-        <button [disabled]="couponApplied" (click)="applyCoupon()">Applica Coupon</button>
+        <div class="d-flex align-items-center justify-content-between">
+          <input class="px-2 py-1" [(ngModel)]="couponCode" name="coupon" type="text" placeholder="Inserisci codice Magalli">
+          <button class="btn btn-success" [disabled]="couponApplied" (click)="applyCoupon()">Applica Coupon</button>
+        </div>
         <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
         <hr>
         <h4>Totale: {{totalCartPrice | currency:'EUR':'symbol'}}</h4>
