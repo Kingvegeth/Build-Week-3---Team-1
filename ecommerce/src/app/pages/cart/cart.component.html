@@ -69,9 +69,9 @@
         </div>
         <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
         <hr>
-        <h4>Totale: {{totalCartPrice | currency:'EUR':'symbol'}}</h4>
+        <h4>Totale: <span class="me-4" [ngClass]="couponApplied ? 'text-decoration-line-through' : ''">{{totalCartPrice | currency:'EUR':'symbol'}}</span><span *ngIf="couponApplied">{{discountedPrice | currency:'EUR':'symbol'}}</span></h4>
         <div class="text-end">
-          <button type="button" class="btn btn-primary" (click)="offcanvas.close('Close click')">Effettua Pagamento</button>
+          <button type="button" class="btn btn-primary mt-2" (click)="offcanvas.close('Close click')">Effettua Pagamento</button>
         </div>
       </div>
 

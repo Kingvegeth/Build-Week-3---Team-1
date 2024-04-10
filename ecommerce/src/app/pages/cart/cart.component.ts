@@ -17,6 +17,7 @@ export class CartComponent {
   currentUserCartProducts: iProduct[] = [];
   productCount: { [productId: number]: number } = {};
   totalCartPrice: number = 0;
+  discountedPrice: number = 0;
 
   couponCode: string = '';
   couponApplied: boolean = false
@@ -100,7 +101,7 @@ export class CartComponent {
 
   applyCoupon() {
     try {
-      this.totalCartPrice = this.couponsSvc.Coupon(this.couponCode, this.totalCartPrice);
+      this.discountedPrice = this.couponsSvc.Coupon(this.couponCode, this.totalCartPrice);
       this.couponApplied = true
       this.errorMessage = '';
     } catch (error) {

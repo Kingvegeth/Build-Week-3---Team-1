@@ -22,12 +22,7 @@
         </button>
       </div>
     </div>
-    <i
-      *ngIf="isAdmin"
-      routerLink="/add-product"
-      role="button"
-      class="add-product fa-plus mb-2"
-    ></i>
+    <i *ngIf="isAdmin" routerLink="/add-product" role="button" class="add-product fa-plus mb-2"></i>
   </div>
 
   <div class="d-flex align-items-center text-white">
@@ -202,7 +197,7 @@
               <div class="card-footer pt-0 mx-0 d-flex align-items-center justify-content-between">
                 <div class="wcf-left"><span class="price fs-4">{{ product.price | currency : "EUR" : "symbol" }}</span></div>
                 <div class="d-flex align-items-center justify-content-end">
-
+                  <button *ngIf="isAdmin"[routerLink]="['/edit-product', product.id]" class="btn btn-secondary mt-2">Modifica</button>
                   <i *ngIf="!isAdmin" role="button" class="text-white me-3"(click)="toggleWishlist(product)"[ngClass]="product.isInWishlist ? 'fas fa-heart' : 'far fa-heart'"></i>
                   <button *ngIf="!isAdmin" class="buy-btn text-white rounded-5 border-0 bg-transparent wcf-right" [disabled]="!product.available" (click)="addToCart(product)">
                     <i class="fas fa-shopping-cart"></i>
@@ -245,7 +240,7 @@
               <div class="wcf-left"><span class="price fs-4">{{ product.price | currency : "EUR" : "symbol" }}</span></div>
               <div class="d-flex align-items-center justify-content-end">
 
-                <button *ngIf="isAdmin"[routerLink]="['/edit-product', product.id]" class="btn btn-secondary">Modifica</button>
+                <button *ngIf="isAdmin"[routerLink]="['/edit-product', product.id]" class="btn btn-secondary mt-2">Modifica</button>
 
                 <i *ngIf="!isAdmin" role="button" class="text-white me-3"(click)="toggleWishlist(product)"[ngClass]="product.isInWishlist ? 'fas fa-heart' : 'far fa-heart'"></i>
                 <button *ngIf="!isAdmin" class="buy-btn text-white rounded-5 border-0 wcf-right" [disabled]="!product.available" (click)="addToCart(product)">
