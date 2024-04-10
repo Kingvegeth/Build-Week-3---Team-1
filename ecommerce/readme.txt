@@ -17,3 +17,7 @@ Idee:
 
 -portafogli
 
+-dettagli card
+
+
+-acquisto rapido

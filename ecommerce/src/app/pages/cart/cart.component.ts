@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, inject } from '@angular/core';
 import { iProduct } from '../../Models/iproduct';
 import { AuthService } from '../../auth/auth.service';
 import { ProductsService } from '../../products.service';
+import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-cart',
@@ -14,6 +15,8 @@ export class CartComponent {
   currentUserCartProducts: iProduct[] = [];
   productCount: { [productId: number]: number } = {};
   totalCartPrice: number = 0;
+
+  private offcanvasService = inject(NgbOffcanvas);
 
   constructor(private authService: AuthService, private productsService: ProductsService) { }
 
@@ -83,5 +86,9 @@ export class CartComponent {
       return total + (product.price * (this.productCount[product.id] || 1));
     }, 0);
   }
+
+  openEnd(content: TemplateRef<any>) {
+		this.offcanvasService.open(content, { position: 'end' });
+	}
 
 }
