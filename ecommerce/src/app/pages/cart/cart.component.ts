@@ -18,6 +18,11 @@ export class CartComponent {
   productCount: { [productId: number]: number } = {};
   totalCartPrice: number = 0;
 
+  couponCode: string = '';
+  couponApplied: boolean = false
+
+  errorMessage: string = '';
+
   private offcanvasService = inject(NgbOffcanvas);
 
   constructor(private authSvc: AuthService, private productsSVC: ProductsService, private couponsSvc: CouponsService) { }
@@ -93,8 +98,14 @@ export class CartComponent {
 		this.offcanvasService.open(content, { position: 'end' });
 	}
 
-  coupon(code:string,total:number){
-    return this.couponsSvc.Coupon(code,total)
+  applyCoupon() {
+    try {
+      this.totalCartPrice = this.couponsSvc.Coupon(this.couponCode, this.totalCartPrice);
+      this.couponApplied = true
+      this.errorMessage = '';
+    } catch (error) {
+      this.errorMessage = error instanceof Error ? error.message : 'Errore sconosciuto';
+    }
   }
 
 }
