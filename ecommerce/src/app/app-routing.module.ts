@@ -9,7 +9,7 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { AdminGuard } from './auth/admin.guard';
-import { ProfileComponent } from './pages/profile/profile.component';
+
 
 const routes: Routes = [
   {
