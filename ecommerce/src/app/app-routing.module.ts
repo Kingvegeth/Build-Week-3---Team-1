@@ -9,6 +9,7 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { AdminGuard } from './auth/admin.guard';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,11 @@ const routes: Routes = [
     path:'wishlist',
     component:WishlistComponent,
     canActivate: [AuthGuard, NotAdminGuard]
+  },
+  {
+    path:'profile',
+    component:ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'edit-product/:id',

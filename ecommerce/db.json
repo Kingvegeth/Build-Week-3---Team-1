@@ -1,18 +1,6 @@
 {
   "users": [
     {
-      "email": "remo@chat.it",
-      "password": "$2a$10$Aw1WacFgjotbz1QsnnDD2.KKqzP431ZdKPXvTNvnGoDF5ISsSbPh2",
-      "firstName": "remo",
-      "lastName": "pedretti",
-      "id": 1,
-      "wishlist": [
-        1,
-        2
-      ],
-      "admin": true
-    },
-    {
       "email": "jesus@god.com",
       "password": "$2a$10$SPfNHfB2f1G7wVh0hSxN5uqlh.9692nnHOtWL5TzbyTBKuXnTIaT.",
       "firstName": "Gesù",
@@ -34,6 +22,14 @@
         2,
         2
       ]
+    },
+    {
+      "email": "remo@email.it",
+      "password": "$2a$10$IJ.OXqjVteVauBnVN9uApuwpZnzodo9zbtT/d5ky8.8UVflb4Whua",
+      "firstName": "Remo",
+      "lastName": "Pedretti",
+      "id": 3,
+      "admin":true
     }
   ],
   "products": [

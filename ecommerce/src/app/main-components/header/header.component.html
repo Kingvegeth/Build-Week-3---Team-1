@@ -12,6 +12,7 @@
     <div class="row justify-content-end align-items-center gap-3">
       <a *ngIf="isUserLoggedIn&&!isAdmin" routerLink="/wishlist" class="col-1 nav-link text-white px-2"><i class="fas fa-heart"></i></a>
       <a *ngIf="isUserLoggedIn&&!isAdmin"  routerLink="/cart" class="col-1 nav-link text-white px-2"><i class="fas fa-shopping-cart"></i></a>
+      <a *ngIf="isUserLoggedIn"  [routerLink]="['/profile']" class="col-1 nav-link text-white px-2"><i class="fa-solid fa-user"></i></a>
       <button (click)="logout()" *ngIf="isUserLoggedIn" class="col-4 col-md-3 col-lg-2 btn btn-danger me-2">Esci</button>
     </div>
   </div>
