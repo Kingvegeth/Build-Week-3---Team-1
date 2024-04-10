@@ -1,8 +1,10 @@
+import { ProductsService } from './../../products.service';
 import { Component, TemplateRef, inject } from '@angular/core';
 import { iProduct } from '../../Models/iproduct';
 import { AuthService } from '../../auth/auth.service';
-import { ProductsService } from '../../products.service';
+
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { CouponsService } from '../../coupons.service';
 
 @Component({
   selector: 'app-cart',
@@ -18,7 +20,7 @@ export class CartComponent {
 
   private offcanvasService = inject(NgbOffcanvas);
 
-  constructor(private authService: AuthService, private productsService: ProductsService) { }
+  constructor(private authSvc: AuthService, private productsSVC: ProductsService, private couponsSvc: CouponsService) { }
 
   ngOnInit(): void {
     this.loadCart();
@@ -26,13 +28,13 @@ export class CartComponent {
 
   addToCart(product: iProduct): void {
     console.log('Aggiunta al carrello in corso...');
-    const userId = this.authService.getCurrentUserId();
+    const userId = this.authSvc.getCurrentUserId();
     if (!userId) {
       console.error('ID utente non valido');
       return;
     }
 
-    this.authService.addCart(userId, product.id).subscribe({
+    this.authSvc.addCart(userId, product.id).subscribe({
       next: () => {
         console.log('Prodotto aggiunto al carrello con successo!');
         this.updateTotalCartPrice();
@@ -44,13 +46,13 @@ export class CartComponent {
   }
 
   loadCart(): void {
-    this.authService.user$.subscribe(user => {
+    this.authSvc.user$.subscribe(user => {
       if (user && user.cart && user.cart.length > 0) {
         const productCount: { [productId: number]: number } = {};
         user.cart.forEach((productId) => {
           productCount[productId] = (productCount[productId] || 0) + 1;
         });
-        this.productsService.getCart(user.cart).subscribe(products => {
+        this.productsSVC.getCart(user.cart).subscribe(products => {
           this.currentUserCartProducts = products;
           this.currentUserCartProducts.forEach(product => {
             product.isInCart = (productCount[product.id] || 0) >= 2;
@@ -65,9 +67,9 @@ export class CartComponent {
   }
 
   removeFromCart(productId: number): void {
-    const userId = this.authService.getCurrentUserId();
+    const userId = this.authSvc.getCurrentUserId();
     if (userId) {
-      this.authService.deleteCart(userId, productId).subscribe({
+      this.authSvc.deleteCart(userId, productId).subscribe({
         next: () => {
           console.log('Prodotto rimosso dal carrello con successo!');
           this.currentUserCartProducts = this.currentUserCartProducts.filter(product => product.id !== productId);
@@ -90,5 +92,9 @@ export class CartComponent {
   openEnd(content: TemplateRef<any>) {
 		this.offcanvasService.open(content, { position: 'end' });
 	}
+
+  coupon(code:string,total:number){
+    return this.couponsSvc.Coupon(code,total)
+  }
 
 }

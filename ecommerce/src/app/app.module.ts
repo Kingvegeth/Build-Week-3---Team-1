@@ -13,7 +13,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { FormsModule } from '@angular/forms';
 import { AddProductComponent } from './pages/add-product/add-product.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
+
 
 
 
@@ -27,8 +27,7 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     WishlistComponent,
     ProfileComponent,
     EditProductComponent,
-    AddProductComponent,
-    CheckoutComponent
+    AddProductComponent
 
   ],
   imports: [

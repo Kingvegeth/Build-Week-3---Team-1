@@ -63,6 +63,8 @@
           </div>
         </div>
         <hr>
+        <input [(ngModel)]="coupon(coupon, totalCartPrice)" name="coupon" type="text" placeholder="Inserisci codice Magalli">
+        <hr>
         <h4>Totale: {{totalCartPrice | currency:'EUR':'symbol'}}</h4>
         <div class="text-end">
           <button type="button" class="btn btn-primary" (click)="offcanvas.close('Close click')">Effettua Pagamento</button>
