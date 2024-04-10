@@ -37,11 +37,7 @@ const routes: Routes = [
     component:WishlistComponent,
     canActivate: [AuthGuard, NotAdminGuard]
   },
-  {
-    path:'profile',
-    component:ProfileComponent,
-    canActivate: [AuthGuard]
-  },
+
   {
     path:'edit-product/:id',
     component:EditProductComponent,

@@ -3,20 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { iUser } from './Models/iuser';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { environment } from '../environments/environment.development';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  private usersUrl = environment.usersUrl;
-  private usersCache: iUser[] = [];
+  usersUrl = environment.usersUrl;
+
   usersArray: iUser[]=[]
 
-  private usersSubject = new BehaviorSubject<iUser[]>([]);
+  usersSubject = new BehaviorSubject<iUser[]>([]);
 
-  public users$ = this.usersSubject.asObservable()
+  $users = this.usersSubject.asObservable()
 
   constructor(private http:HttpClient){
     this.getAll().subscribe(data => {
@@ -32,7 +32,7 @@ export class UsersService {
   }
 
   getUserById(id: number): Observable<iUser> {
-    const url = `${this.usersUrl}`;
+    const url = `${this.usersUrl}/${id}`;
     return this.http.get<iUser>(url);
   }
 
@@ -42,17 +42,6 @@ export class UsersService {
     });
   }
 
-  updateUser(user: iUser): Observable<any> {
-    const url = `${this.usersUrl}`;
-    return this.http.put(url, user).pipe(
-      tap(() => {
-        const index = this.usersCache.findIndex(p => p.id === user.id);
-        if (index !== -1) {
-          this.usersCache[index] = user;
-          this.usersSubject.next(this.usersCache);
-        }
-      })
-    );
-  }
+
 
 }
