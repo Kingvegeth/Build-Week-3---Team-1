@@ -202,6 +202,20 @@ export class AuthService {
     );
   }
 
+  emptyCart(userId: number): Observable<any> {
+    const url = `${environment.usersUrl}/${userId}`;
+    return this.http.get<any>(url).pipe(
+      tap(user => {
+        const updatedCart:number[] = [];
+        const updatedUser = { ...user, cart: updatedCart };
+        this.http.patch<any>(url, { cart: updatedCart }).subscribe(() => {
+          this.authSubject.next(updatedUser);
+        });
+      })
+    );
+  }
+
+
   countProductInCart(productId: number): Observable<number> {
     return this.user$.pipe(
       map(user => {

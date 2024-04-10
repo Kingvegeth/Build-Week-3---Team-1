@@ -247,3 +247,26 @@ button.buy-btn{
 .per{
   font-size: 0.8EM;
 }
+
+
+
+.sticky-top.scrolled {
+  opacity: 0;
+}
+
+
+.fixed-bottom{
+  opacity: 0;
+  background-color: rgb(23, 25, 43);
+  transition: opacity 0.3s ease;
+}
+
+.fixed-bottom.scrolled {
+  background-color: rgb(23, 25, 43);
+  opacity: 1;
+
+}
+
+.shell.scrolled{
+  margin-bottom: 100px;
+}

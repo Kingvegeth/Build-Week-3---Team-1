@@ -7,20 +7,20 @@
       "lastName": "Cristo",
       "id": 2,
       "wishlist": [
-        2,
         7,
-        8
+        8,
+        6,
+        2,
+        3,
+        4
       ],
       "cart": [
         2,
         3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        2,
-        2
+        4,
+        5,
+        4,
+        3
       ]
     },
     {
@@ -29,7 +29,7 @@
       "firstName": "Remo",
       "lastName": "Pedretti",
       "id": 3,
-      "admin":true
+      "admin": true
     }
   ],
   "products": [

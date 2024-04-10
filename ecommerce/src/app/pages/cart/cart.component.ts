@@ -1,5 +1,5 @@
 import { ProductsService } from './../../products.service';
-import { Component, TemplateRef, inject } from '@angular/core';
+import { Component, HostListener, TemplateRef, inject } from '@angular/core';
 import { iProduct } from '../../Models/iproduct';
 import { AuthService } from '../../auth/auth.service';
 
@@ -18,11 +18,14 @@ export class CartComponent {
   productCount: { [productId: number]: number } = {};
   totalCartPrice: number = 0;
   discountedPrice: number = 0;
+  showAlert:boolean = false
 
   couponCode: string = '';
   couponApplied: boolean = false
 
   errorMessage: string = '';
+
+  scrolled:boolean = false;
 
   private offcanvasService = inject(NgbOffcanvas);
 
@@ -88,6 +91,10 @@ export class CartComponent {
     }
   }
 
+  emptyCart(userId:number):void{
+    this.authSvc.emptyCart(userId);
+  }
+
 
   updateTotalCartPrice(): void {
     this.totalCartPrice = this.currentUserCartProducts.reduce((total, product) => {
@@ -109,4 +116,34 @@ export class CartComponent {
     }
   }
 
+  checkoutCompleted(){
+    const userId = this.authSvc.getCurrentUserId();
+    if (userId) {
+      this.authSvc.emptyCart(userId).subscribe({
+        next: () => {
+          console.log('Carrello svuotato con successo');
+          this.loadCart();
+          this.showAlert = true;
+          setTimeout(() => {
+            this.showAlert = false;
+          }, 2000);
+        },
+        error: (error) => {
+          console.error('Errore durante lo svuotamento del carrello', error);
+        }
+      });
+    } else {
+      console.error('ID utente non valido');
+    }
+  }
+
+
+@HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (window.pageYOffset > 155) {
+      this.scrolled = true;
+    } else {
+      this.scrolled = false;
+    }
+  }
 }

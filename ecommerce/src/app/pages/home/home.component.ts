@@ -17,7 +17,8 @@ export class HomeComponent {
   categories: string[] = [];
   filteredProducts: iProduct[] = [];
   showFiltered: boolean = false;
-
+  showAlert:boolean = false
+  alertMessage:string =''
 
   searchTerms: string = ''
 
@@ -113,7 +114,11 @@ export class HomeComponent {
     this.authSvc.addCart(userId, product.id).subscribe({
       next: () => {
         console.log('Prodotto aggiunto al carrello con successo!');
-
+        this.alertMessage = product.name + ' aggiunto al carrello!'
+        this.showAlert = true;
+          setTimeout(() => {
+            this.showAlert = false;
+          }, 2000);
       },
       error: (error) => {
         console.error('Errore nell\'aggiungere al carrello', error);

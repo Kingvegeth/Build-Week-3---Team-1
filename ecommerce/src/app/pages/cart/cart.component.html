@@ -1,11 +1,11 @@
   <div *ngIf="currentUserCartProducts.length>0; else emptyCart">
     <h1 class="mt-5 mb-3 text-white">Il tuo carrello</h1>
-    <div class="d-flex align-items-center justify-content-between">
+    <div [ngClass]="{'scrolled': scrolled}" data-bs-stackable="true" data-bs-toggle="sticky" class="sticky-top d-flex align-items-center justify-content-between mb-3">
       <h2  class="text-white me-5">Totale Carrello: {{totalCartPrice | currency:'EUR':'symbol'}}</h2>
       <button (click)="openEnd(content)" class="btn btn-primary me-5">Procedi al checkout</button>
     </div>
 
-    <div class="shell">
+    <div  class="shell position-relative" [ngClass]="{'scrolled': scrolled}">
       <div class="container">
         <div class="row  row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
           <div class="col" *ngFor="let product of currentUserCartProducts">
@@ -24,11 +24,11 @@
                 <div class="title-product">
                   <h3>{{ product.name }}</h3>
                 </div>
+                <div class="wcf-left text-center"><span class="price fs-4">{{ product.price | currency : "EUR" : "symbol" }}</span></div>
                 <div class="card-footer pt-2 d-flex align-items-center justify-content-between mx-0">
-                  <div class="wcf-left"><span class="price fs-4">{{ product.price | currency : "EUR" : "symbol" }}</span></div>
-                  <div class="d-flex align-items-center justify-content-end">
+                  <p class="mb-0 me-2">Nel carrello: {{ productCount[product.id] || 0 }}</p>
+                  <div class="d-flex align-items-center justify-content-between">
 
-                    <p class="mb-0 me-2">Nel carrello: {{ productCount[product.id] || 0 }}</p>
                     <i role="button " (click)="addToCart(product)" class="add-btn text-white fa-solid fa-plus"></i>
                     <i role="button " (click)="removeFromCart(product.id)" class="remove-btn text-white" [ngClass]="product.isInCart ? 'fa-solid fa-minus' : 'fa-solid fa-xmark'"></i>
                   </div>
@@ -38,9 +38,10 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
+  <div *ngIf="showAlert" class="alert alert-primary position-absolute bottom-50 start-50">Acquisto effettuato con successo!</div>
+
   <ng-template #emptyCart>
     <h1 class="my-5 text-white">Il tuo carrello è vuoto.</h1>
   </ng-template>
@@ -71,9 +72,14 @@
         <hr>
         <h4>Totale: <span class="me-4" [ngClass]="couponApplied ? 'text-decoration-line-through' : ''">{{totalCartPrice | currency:'EUR':'symbol'}}</span><span *ngIf="couponApplied">{{discountedPrice | currency:'EUR':'symbol'}}</span></h4>
         <div class="text-end">
-          <button type="button" class="btn btn-primary mt-2" (click)="offcanvas.close('Close click')">Effettua Pagamento</button>
+          <button type="button" class="btn btn-primary mt-2" (click)="offcanvas.close('Close click'); checkoutCompleted() ">Effettua Pagamento</button>
         </div>
       </div>
 
     </div>
     </ng-template>
+
+    <div [ngClass]="{'scrolled': scrolled}" data-bs-stackable="true" data-bs-toggle="sticky" class="fixed-bottom d-flex align-items-center justify-content-between mb-0 px-5 py-3">
+      <h2  class="text-white me-5">Totale Carrello: {{totalCartPrice | currency:'EUR':'symbol'}}</h2>
+      <button (click)="openEnd(content)" class="btn btn-primary">Procedi al checkout</button>
+    </div>
