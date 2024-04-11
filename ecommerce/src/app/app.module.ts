@@ -14,6 +14,7 @@ import { EditProductComponent } from './pages/edit-product/edit-product.componen
 import { FormsModule } from '@angular/forms';
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { ProductDetailComponent } from './components/modals/product-detail/product-detail.component';
+import { FooterComponent } from './main-components/footer/footer.component';
 
 
 
@@ -29,7 +30,8 @@ import { ProductDetailComponent } from './components/modals/product-detail/produ
 
     EditProductComponent,
     AddProductComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    FooterComponent
 
   ],
   imports: [

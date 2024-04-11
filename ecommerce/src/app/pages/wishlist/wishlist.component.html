@@ -46,6 +46,7 @@
                 </div>
                 <div class="card-footer pt-2 d-flex align-items-center justify-content-between">
                   <div class="wcf-left"><span class="price fs-4">{{ product.price | currency : "EUR" : "symbol" }}</span></div>
+                  <i  *ngIf="product && product.quantity !== undefined && product.quantity < 10" title="Ultimi {{product.quantity}} pezzi rimasti!" class="text-danger fas fa-exclamation-circle"></i>
                   <div class="d-flex align-items-center justify-content-end">
 
                     <button *ngIf="isAdmin"[routerLink]="['/edit-product', product.id]" class="btn btn-secondary">Modifica</button>
