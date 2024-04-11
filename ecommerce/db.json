@@ -7,18 +7,17 @@
       "lastName": "Cristo",
       "id": 2,
       "wishlist": [
-        7,
-        8,
         2,
         1,
-        3
+        3,
+        4
       ],
       "cart": [
-        3,
-        2,
-        2,
-        6,
-        5
+        9,
+        9,
+        9,
+        9,
+        9
       ]
     },
     {
@@ -76,23 +75,23 @@
     },
     {
       "id": 5,
-      "category": "Elettronica",
-      "price": 22.63,
-      "name": "Enim",
-      "brand": "Ricci e figli",
-      "productImg": "https://picsum.photos/200/300?random=5",
-      "description": "Ab aut sit placeat repudiandae modi cum mollitia modi officia veritatis dolores autem voluptatem perferendis.",
+      "category": "Mario",
+      "price": 55,
+      "name": "Asciugamario",
+      "brand": "Piccol",
+      "productImg": "https://i.ibb.co/rm8XXWn/asciugamario.jpg",
+      "description": "Per quelli che non hanno le tonsille",
       "available": true,
       "quantity": 82
     },
     {
       "id": 6,
       "category": "Abbigliamento",
-      "price": 498.03,
-      "name": "Ab",
-      "brand": "Bianchi ",
-      "productImg": "https://picsum.photos/200/300?random=6",
-      "description": "Quam nemo repudiandae dolorum harum hic repudiandae consectetur soluta a nostrum in alias.",
+      "price": 2000000,
+      "name": "Lelli Kelly",
+      "brand": "Lelli Kelly",
+      "productImg": "https://i.ibb.co/9NVNxFm/lelli-kelly.jpg",
+      "description": "Siam Lelli Kelly, le tue scarpine o ye! \nSiam Lelli Kelly, le più carine o ye! \nTu puoi giocar con noi... \nSiamo sicure sai !!",
       "available": true,
       "quantity": 59
     },
@@ -115,6 +114,16 @@
       "productImg": "https://m.media-amazon.com/images/I/918zVBwVAZL._SL1500_.jpg",
       "category": "Libri",
       "price": 69
+    },
+    {
+      "id": 9,
+      "name": "Lucidalabrador",
+      "category": "Mario",
+      "price": 201.75,
+      "brand": "Piccol",
+      "productImg": "https://i.ibb.co/VH3GdMk/lucidalabrador.png",
+      "description": ".",
+      "available": true
     }
   ]
 }

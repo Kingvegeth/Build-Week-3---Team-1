@@ -9,7 +9,7 @@
         Tutto
       </button>
       <div *ngFor="let category of categories">
-        <button class="btn btn-secondary rounded-5" (click)="filterByCategory(category)">
+        <button class="btn-category btn btn-secondary rounded-5" (click)="filterByCategory(category)">
           {{ category }}
         </button>
       </div>
