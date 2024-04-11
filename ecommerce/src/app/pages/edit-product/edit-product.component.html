@@ -38,10 +38,17 @@
       <textarea [(ngModel)]="product.description" name="description" id="description" required class="form-control"></textarea>
     </div>
 
+    <div class="d-flex gap-2">
 
-    <div class="form-group form-check">
-      <input [(ngModel)]="product.available" name="available" type="checkbox" id="available" class="form-check-input">
-      <label for="available" class="form-check-label">Disponibile</label>
+      <div class="form-group form-check">
+        <input [(ngModel)]="product.available" name="available" type="checkbox" id="available" class="form-check-input">
+        <label for="available" class="form-check-label">Disponibile</label>
+      </div>
+
+      <div class="form-group form-check">
+        <input [(ngModel)]="product.available" name="quantity" type="number" id="quantity" class="form-check-input">
+        <label for="quantity" class="form-check-label">Quantità</label>
+      </div>
     </div>
 
     <button type="submit" class="btn btn-primary">Salva Modifiche</button>
