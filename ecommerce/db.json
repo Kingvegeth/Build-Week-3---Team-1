@@ -9,18 +9,20 @@
       "wishlist": [
         7,
         8,
-        6,
         2,
-        3,
-        4
+        1,
+        3
       ],
       "cart": [
         2,
         3,
         4,
-        5,
-        4,
-        3
+        3,
+        3,
+        2,
+        2,
+        2,
+        6
       ]
     },
     {
@@ -48,10 +50,10 @@
       "id": 2,
       "category": "Libri",
       "price": 39.78,
-      "name": "Enimf",
-      "brand": "Michelangeli SPA",
-      "productImg": "https://picsum.photos/200/300?random=2",
-      "description": "Quas fugiat culpa id sed aliquid odit.",
+      "name": "!important e altre best practices",
+      "brand": "Passamontagna Edizioni",
+      "productImg": "https://i.ibb.co/XDYPbZ7/important-book.jpg",
+      "description": "Se vuoi diventare web developer questo è il libro per te!",
       "available": true,
       "quantity": 98
     },
@@ -104,7 +106,7 @@
       "brand": "Dio",
       "description": "Il Best-seller Fantasy che più letto in Epicode",
       "available": true,
-      "productImg": "https://picsum.photos/200/300",
+      "productImg": "https://iili.io/Jv9koZb.md.jpg",
       "category": "Libri",
       "price": 6.66
     },
@@ -114,7 +116,7 @@
       "brand": "Dio",
       "description": "Ponzio, prova a lavarti le mani dopo che te le ho staccate!",
       "available": true,
-      "productImg": "https://picsum.photos/200/300",
+      "productImg": "https://m.media-amazon.com/images/I/918zVBwVAZL._SL1500_.jpg",
       "category": "Libri",
       "price": 69
     }

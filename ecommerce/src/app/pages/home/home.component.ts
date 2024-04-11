@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ProductsService } from '../../products.service';
 import { AuthService } from '../../auth/auth.service';
 import { iProduct } from '../../Models/iproduct';
+import { combineLatest } from 'rxjs';
 
 
 @Component({
@@ -24,6 +25,9 @@ export class HomeComponent {
 
   isAdmin: boolean = false
 
+  selectedProduct: iProduct | null = null;
+
+
   constructor(private productsSvc: ProductsService, private authSvc: AuthService) { }
 
   ngOnInit(): void {
@@ -31,21 +35,25 @@ export class HomeComponent {
 
   }
 
-  loadProducts(){
-    this.productsSvc.getAll().subscribe(allProducts => {
+  loadProducts() {
+
+    combineLatest([
+      this.productsSvc.getAll(),
+      this.authSvc.user$
+    ]).subscribe(([allProducts, user]) => {
       this.products = allProducts;
       console.log(this.products);
-    });
 
-    this.authSvc.user$.subscribe(user => {
       this.isAdmin = !!user && user.admin;
-      if(user) {
+
+      if (user) {
         const wishlistIds = user.wishlist || [];
         this.products.forEach(product => {
           product.isInWishlist = wishlistIds.includes(product.id);
         });
       }
     });
+
     this.productsSvc.getUniqueCategories().subscribe(categories => {
       this.categories = categories;
     });
@@ -155,6 +163,14 @@ showSearch(event: any): void {
 
     this.showFiltered = false;
   }
+}
+
+openProductModal(product: iProduct): void {
+  this.selectedProduct = product;
+}
+
+closeProductModal(): void {
+  this.selectedProduct = null;
 }
 
 

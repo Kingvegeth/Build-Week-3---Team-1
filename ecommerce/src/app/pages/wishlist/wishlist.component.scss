@@ -142,7 +142,7 @@ button.buy-btn{
   height:35px;
   line-height:35px;
   border-radius:50%;
-  border:1px solid #212121;
+
   transition: all 0.2s ease-in-out;
 }
 button.buy-btn:hover , button.buy-btn:active, button.buy-btn:focus{
@@ -150,6 +150,13 @@ button.buy-btn:hover , button.buy-btn:active, button.buy-btn:focus{
   background: #6D1666;
   color: white;
   text-decoration:none;
+}
+
+button.buy-btn:disabled:hover {
+  background-color: gray;
+  border-color: gray;
+  color: white;
+  cursor: not-allowed;
 }
 .wsk-btn{
   display:inline-block;
@@ -213,7 +220,7 @@ button.buy-btn{
   height:35px;
   line-height:35px;
   border-radius:50%;
-  border:1px solid #212121;
+
   transition: all 0.2s ease-in-out;
 }
 .remove-btn:hover , .remove-btn:active, .remove-btn:focus{

@@ -9,10 +9,7 @@
         Tutto
       </button>
       <div *ngFor="let category of categories">
-        <button
-          class="btn btn-secondary rounded-5"
-          (click)="filterByCategory(category)"
-        >
+        <button class="btn btn-secondary rounded-5" (click)="filterByCategory(category)">
           {{ category }}
         </button>
       </div>
@@ -69,7 +66,7 @@
                 <div class="d-flex align-items-center justify-content-end">
                   <button *ngIf="isAdmin"[routerLink]="['/edit-product', product.id]" class="btn btn-secondary mt-2">Modifica</button>
                   <i *ngIf="!isAdmin" role="button" class="text-white me-3"(click)="toggleWishlist(product)"[ngClass]="product.isInWishlist ? 'fas fa-heart' : 'far fa-heart'"></i>
-                  <button *ngIf="!isAdmin" class="buy-btn text-white rounded-5 border-0 bg-transparent wcf-right" [disabled]="!product.available" (click)="addToCart(product)">
+                  <button *ngIf="!isAdmin" title="{{ product.available ? '' : 'Prodotto momentaneamente non disponibile' }}" class="buy-btn text-white rounded-5 border-0 wcf-right" [disabled]="!product.available" (click)="addToCart(product)">
                     <i class="fas fa-shopping-cart"></i>
                   </button>
                 </div>
@@ -89,7 +86,7 @@
     <div class="row  row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
       <div class="col" *ngFor="let product of products">
         <div class="wsk-cp-product">
-          <div class="wsk-cp-img">
+          <div class="wsk-cp-img" (click)="openProductModal(product)">
             <img
             [src]="product.productImg"
             class="img-responsive"
@@ -98,7 +95,7 @@
           </div>
           <div class="wsk-cp-text">
             <div class="category">
-              <span>{{ product.brand }}</span>
+              <span>{{ product.category }}</span>
             </div>
             <div class="title-product">
               <h3>{{ product.name }}</h3>
@@ -113,8 +110,8 @@
                 <button *ngIf="isAdmin"[routerLink]="['/edit-product', product.id]" class="btn btn-secondary mt-2">Modifica</button>
 
                 <i *ngIf="!isAdmin" role="button" class="text-white me-3"(click)="toggleWishlist(product)"[ngClass]="product.isInWishlist ? 'fas fa-heart' : 'far fa-heart'"></i>
-                <button *ngIf="!isAdmin" class="buy-btn text-white rounded-5 border-0 wcf-right" [disabled]="!product.available" (click)="addToCart(product)">
-                  <i class="fas fa-shopping-cart"></i>
+                <button *ngIf="!isAdmin" title="{{ product.available ? '' : 'Prodotto momentaneamente non disponibile' }}" class="buy-btn text-white rounded-5 border-0 wcf-right" [disabled]="!product.available" (click)="addToCart(product)">
+                  <i [ngClass]="product.available ? 'text-white' : 'text-danger'" class="fas fa-shopping-cart"></i>
                 </button>
               </div>
             </div>
@@ -128,3 +125,6 @@
 
 
 <div *ngIf="showAlert" class="alert alert-secondary position-fixed bottom-0 start-50 translate-middle-x bottom-50 start-50">{{alertMessage}}</div>
+
+<app-product-detail id="productModal" *ngIf="selectedProduct" [product]="selectedProduct" (close)="closeProductModal()"></app-product-detail>
+

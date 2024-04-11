@@ -142,7 +142,7 @@ button.buy-btn{
   height:35px;
   line-height:35px;
   border-radius:50%;
-  border:1px solid #212121;
+
   transition: all 0.2s ease-in-out;
 }
 button.buy-btn:hover , button.buy-btn:active, button.buy-btn:focus{
@@ -213,7 +213,7 @@ button.buy-btn{
   height:35px;
   line-height:35px;
   border-radius:50%;
-  border:1px solid #212121;
+
   transition: all 0.2s ease-in-out;
 }
 .remove-btn:hover , .remove-btn:active, .remove-btn:focus{
@@ -233,7 +233,7 @@ button.buy-btn{
   height:35px;
   line-height:35px;
   border-radius:50%;
-  border:1px solid #212121;
+
   transition: all 0.2s ease-in-out;
 }
 
@@ -258,13 +258,14 @@ button.buy-btn{
 .fixed-bottom{
   opacity: 0;
   background-color: rgb(23, 25, 43);
-  transition: opacity 0.3s ease;
+
+  z-index: -1;
 }
 
 .fixed-bottom.scrolled {
   background-color: rgb(23, 25, 43);
   opacity: 1;
-
+  z-index: 2;
 }
 
 .shell.scrolled{

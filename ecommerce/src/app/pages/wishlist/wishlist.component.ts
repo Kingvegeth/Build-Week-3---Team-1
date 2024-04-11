@@ -13,6 +13,9 @@ export class WishlistComponent {
   currentUserWishlistProducts: iProduct[] = [];
   isAdmin: boolean = false;
 
+  showAlert:boolean = false
+  alertMessage:string =''
+
   constructor(private authSvc: AuthService, private productsSvc: ProductsService) { }
 
   ngOnInit(): void {
@@ -67,7 +70,11 @@ export class WishlistComponent {
     this.authSvc.addCart(userId, product.id).subscribe({
       next: () => {
         console.log('Prodotto aggiunto al carrello con successo!');
-
+        this.alertMessage = product.name + ' aggiunto al carrello!'
+        this.showAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 2000);
       },
       error: (error) => {
         console.error('Errore nell\'aggiungere al carrello', error);

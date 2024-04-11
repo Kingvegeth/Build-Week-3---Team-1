@@ -51,7 +51,7 @@
                     <button *ngIf="isAdmin"[routerLink]="['/edit-product', product.id]" class="btn btn-secondary">Modifica</button>
 
                     <i role="button" class="remove-btn text-white me-3 fas fa-times"(click)="removeFromWishlist(product.id)"></i>
-                    <button *ngIf="!isAdmin" class="buy-btn text-white rounded-5 border-0  wcf-right" [disabled]="!product.available" (click)="addToCart(product)">
+                    <button *ngIf="!isAdmin" title="{{ product.available ? '' : 'Prodotto momentaneamente non disponibile' }}" class="buy-btn text-white rounded-5 border-0  wcf-right" [disabled]="!product.available" (click)="addToCart(product)">
                       <i class="fas fa-shopping-cart"></i>
                     </button>
                   </div>
@@ -66,3 +66,5 @@
   <ng-template #emptyWishlist>
     <h1 class="my-5 text-white">La tua lista dei desideri è vuota.</h1>
   </ng-template>
+
+  <div *ngIf="showAlert" class="alert alert-secondary position-fixed bottom-0 start-50 translate-middle-x bottom-50 start-50">{{alertMessage}}</div>
