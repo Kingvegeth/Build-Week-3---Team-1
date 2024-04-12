@@ -14,7 +14,7 @@
         </button>
       </div>
     </div>
-    <i *ngIf="isAdmin" routerLink="/add-product" role="button" title="Aggiungi un prodotto" class="add-product fa-plus mb-2"></i>
+    <i *ngIf="isAdmin" routerLink="/add-product" role="button" title="Aggiungi un prodotto" class="add-product fa-plus mb-2 "></i>
   </div>
 
   <div class="d-flex align-items-center text-white mb-2">
@@ -61,12 +61,12 @@
               <div class="description-prod">
                 <p>{{(product.description| slice:0:60) + '...'}}</p>
               </div>
-              <div class="card-footer pt-0 mx-0 d-flex align-items-center justify-content-between">
+              <div class="card-footer pt-0 mx-0 d-flex align-items-center justify-content-between ">
                 <div class="wcf-left"><span class="price fs-4">{{ product.price | currency : "EUR" : "symbol" }}</span></div>
                 <!-- <i  *ngIf="!isAdmin && product && product.quantity !== undefined && product.quantity < 10" title="Ultimi {{product.quantity}} pezzi rimasti!" class="text-danger fas fa-exclamation-circle"></i> -->
-                <div class="d-flex align-items-center justify-content-end">
+                <div class="d-flex align-items-center justify-content-end ">
                   <button *ngIf="isAdmin"[routerLink]="['/edit-product', product.id]" class="btn btn-secondary mt-2">Modifica</button>
-                  <i *ngIf="!isAdmin" role="button" class="text-white me-3"(click)="toggleWishlist(product)"[ngClass]="product.isInWishlist ? 'fas fa-heart' : 'far fa-heart'"></i>
+                  <i *ngIf="!isAdmin" role="button" class="text-white me-3 "(click)="toggleWishlist(product)"[ngClass]="product.isInWishlist ? 'fas fa-heart' : 'far fa-heart'"></i>
                   <button *ngIf="!isAdmin" title="{{ product.available ? '' : 'Prodotto momentaneamente non disponibile' }}" class="buy-btn text-white rounded-5 border-0 wcf-right" [disabled]="!product.available" (click)="addToCart(product)">
                     <i class="fas fa-shopping-cart"></i>
                   </button>

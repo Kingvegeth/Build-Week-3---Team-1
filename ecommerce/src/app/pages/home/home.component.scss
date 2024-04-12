@@ -156,8 +156,24 @@ button.buy-btn:hover , button.buy-btn:active, button.buy-btn:focus{
   color: white;
   text-decoration:none;
 }
+.fa-heart{width:35px;  text-align:center;
 
-button.buy-btn:disabled:hover {
+  height:35px;  line-height:35px;
+  border-radius:50%;
+  transition: all 0.2s ease-in-out;
+}
+.fa-heart:hover , .fa-heart:active, .fa-heart:focus{
+  border-color: #303aad;
+
+  background:#303aad;
+  color: white;
+  text-decoration:none;
+}
+
+.add-product{transition: 200ms ease-in-out;}
+.add-product:hover {
+  color: #F2859E;
+}button.buy-btn:disabled:hover {
   background-color: gray;
   border-color: gray;
   color: white;
