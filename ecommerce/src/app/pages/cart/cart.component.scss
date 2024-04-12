@@ -258,14 +258,14 @@ button.buy-btn{
 .fixed-bottom{
   opacity: 0;
   background-color: rgb(23, 25, 43);
-
+  height: 100px;
   z-index: -1;
 }
 
 .fixed-bottom.scrolled {
   background-color: rgb(23, 25, 43);
   opacity: 1;
-  z-index: 2;
+  z-index: 5;
 }
 
 .shell.scrolled{
