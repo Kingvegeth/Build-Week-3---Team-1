@@ -6,18 +6,9 @@
       "firstName": "Gesù",
       "lastName": "Cristo",
       "id": 2,
-      "wishlist": [
-        2,
-        1,
-        3,
-        4
-      ],
+      "wishlist": [],
       "cart": [
-        9,
-        9,
-        9,
-        9,
-        9
+        10
       ]
     },
     {
@@ -91,7 +82,7 @@
       "name": "Lelli Kelly",
       "brand": "Lelli Kelly",
       "productImg": "https://i.ibb.co/9NVNxFm/lelli-kelly.jpg",
-      "description": "Siam Lelli Kelly, le tue scarpine o ye! \nSiam Lelli Kelly, le più carine o ye! \nTu puoi giocar con noi... \nSiamo sicure sai !!",
+      "description": "Siam Lelli Kelly, le tue scarpine oh yeah! \nSiam Lelli Kelly, le più carine oh yeah! \nTu puoi giocar con noi... \nSiamo sicure sai !!",
       "available": true,
       "quantity": 59
     },
@@ -122,7 +113,7 @@
       "price": 201.75,
       "brand": "Piccol",
       "productImg": "https://i.ibb.co/VH3GdMk/lucidalabrador.png",
-      "description": ".",
+      "description": "Un prodotto indispensabile!",
       "available": true
     }
   ]

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { iUser } from '../Models/iuser';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { BehaviorSubject, Observable, catchError, map, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, switchMap, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment.development';
@@ -162,15 +162,21 @@ export class AuthService {
   addCart(userId: number, productId: number): Observable<any> {
     const url = `${environment.usersUrl}/${userId}`;
     return this.http.get<any>(url).pipe(
-      tap(user => {
+      switchMap(user => {
         const cart = Array.isArray(user.cart) ? user.cart : [];
-
-          const updatedcart = [...cart, productId];
-          const updatedUser = { ...user, cart: updatedcart };
-          this.http.patch<any>(url, { cart: updatedcart }).subscribe(() => {
-            this.authSubject.next(updatedUser);
-          });
-
+        const updatedCart = [...cart, productId];
+        const updatedUser = { ...user, cart: updatedCart };
+        return this.http.patch<any>(url, { cart: updatedCart }).pipe(
+          tap(() => this.authSubject.next(updatedUser)),
+          catchError(err => {
+            console.error('Failed to add to cart', err);
+            throw err;
+          })
+        );
+      }),
+      catchError(err => {
+        console.error('Failed to retrieve user', err);
+        throw err;
       })
     );
   }
@@ -179,6 +185,7 @@ export class AuthService {
     const url = `${environment.usersUrl}/${userId}`;
     return this.http.get<any>(url).pipe(
       tap(user => {
+        console.log('User before cart update:', user);
         const cart = Array.isArray(user.cart) ? user.cart : [];
         let removed = false;
 
@@ -194,13 +201,15 @@ export class AuthService {
 
         if (removed) {
           const updatedUser = { ...user, cart: updatedCart };
+          console.log('Updated user with cart:', updatedUser);
           this.http.patch<any>(url, { cart: updatedCart }).subscribe(() => {
+            console.log('User updated successfully');
             this.authSubject.next(updatedUser);
           });
         }
       })
     );
-  }
+}
 
   emptyCart(userId: number): Observable<any> {
     const url = `${environment.usersUrl}/${userId}`;

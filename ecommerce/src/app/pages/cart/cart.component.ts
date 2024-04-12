@@ -73,23 +73,28 @@ export class CartComponent {
         this.currentUserCartProducts = [];
       }
     });
-  }
+}
 
-  removeFromCart(productId: number): void {
-    const userId = this.authSvc.getCurrentUserId();
-    if (userId) {
+removeFromCart(productId: number): void {
+  const userId = this.authSvc.getCurrentUserId();
+  if (userId) {
+    if (this.productCount[productId] && this.productCount[productId] > 0) {
       this.authSvc.deleteCart(userId, productId).subscribe({
         next: () => {
           console.log('Prodotto rimosso dal carrello con successo!');
-          this.currentUserCartProducts = this.currentUserCartProducts.filter(product => product.id !== productId);
+          this.productCount[productId]--;
+          if (this.productCount[productId] === 0) {
+            this.currentUserCartProducts = this.currentUserCartProducts.filter(p => p.id !== productId);
+          }
           this.updateTotalCartPrice();
         },
         error: (error) => console.error('Errore nella rimozione dal carrello', error)
       });
-    } else {
-      console.error('ID utente non valido');
     }
+  } else {
+    console.error('ID utente non valido');
   }
+}
 
   emptyCart(userId:number):void{
     this.authSvc.emptyCart(userId);

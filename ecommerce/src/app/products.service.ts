@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { iProduct } from './Models/iproduct';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map, of, tap } from 'rxjs';
@@ -22,15 +22,18 @@ export class ProductsService {
   }
 
   getAll(): Observable<iProduct[]> {
-    return this.http.get<iProduct[]>(this.productsUrl)
-  }
+    const headers = new HttpHeaders().set('Cache-Control', 'no-cache');
+    return this.http.get<iProduct[]>(this.productsUrl, { headers });
+}
 
   getWishlist(wishlistedIds: number[]): Observable<iProduct[]> {
     return of(this.productsCache.filter(product => wishlistedIds.includes(product.id)));
   }
 
   getCart(addedToCartIds: number[]): Observable<iProduct[]> {
-    return of(this.productsCache.filter(product => addedToCartIds.includes(product.id)));
+    return this.http.get<iProduct[]>(this.productsUrl).pipe(
+      map(products => products.filter(product => addedToCartIds.includes(product.id)))
+    );
   }
 
   getProductsByCategory(category: string): Observable<iProduct[]> {
@@ -89,10 +92,12 @@ export class ProductsService {
   }
 
   addProduct(product: iProduct): Observable<iProduct> {
-    return this.http.post<iProduct>(this.productsUrl, product)
-    .pipe(tap(()=>{
-    this.getAll().subscribe(dato=>this.productsSubject.next(dato))
-    }));
+    return this.http.post<iProduct>(this.productsUrl, product).pipe(
+      tap((newProduct: iProduct) => {
+        this.productsCache = [...this.productsCache, newProduct];
+        this.productsSubject.next(this.productsCache);
+      })
+    );
   }
 
 
