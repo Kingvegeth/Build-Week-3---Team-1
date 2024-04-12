@@ -29,7 +29,7 @@
                   <p class="mb-0 me-2">Nel carrello: {{ productCount[product.id] || 0 }}</p>
                   <div class="d-flex align-items-center justify-content-between">
 
-                    <i role="button" (click)="addToCart(product)" class="add-btn text-white fa-solid fa-plus"></i>
+                    <i role="button" (click)="addToCart(product)" class="add-btn text-white fa-solid fa-plus me-2"></i>
                     <i role="button" (click)="removeFromCart(product.id)" class="remove-btn text-white" [ngClass]="product.isInCart ? 'fa-solid fa-minus' : 'fa-solid fa-xmark'"></i>
                   </div>
                 </div>
